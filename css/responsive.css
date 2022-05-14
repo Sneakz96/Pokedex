@@ -1,0 +1,16 @@
+@media (max-width: 950px) {
+    /*HEADER*/
+    .searchbar {
+        display: none;
+    }
+
+    h1:hover {
+        transform: none;
+    }
+
+    .pokeball:hover {
+        transform: none;
+    }
+    /*MAIN*/
+    /**/
+}

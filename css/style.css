@@ -1,0 +1,277 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+
+/*header*/
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 10vh;
+}
+
+h1:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+h2 {
+    color: rgb(92, 92, 92);
+}
+
+a {
+    text-decoration: none;
+    color: rgb(92, 92, 92);
+}
+
+a:hover {
+    color: rgb(92, 92, 92);
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 5px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.searchbar img {
+    height: 24px;
+    padding: 3px;
+}
+
+.searchbar img:hover {
+    cursor: pointer;
+}
+
+.input-searchbar {
+    line-height: 21px;
+    border: none;
+}
+
+.input-searchbar:focus {
+    outline: none;
+}
+
+.pokeball {
+    height: 60px;
+    opacity: 0.8;
+}
+
+.pokeball:hover {
+    transform: scale(1.05);
+}
+
+/*main*/
+
+.main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* pokedex*/
+
+.pokedex {
+    display: flex;
+    height: fit-content;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.pokemon-preview {
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pokemon-preview:hover {
+    cursor: pointer;
+}
+
+.small-pokemons {
+    height: 150px;
+}
+
+.small-pokemons:hover {
+    transform: scale(1.15);
+    cursor: pointer;
+}
+
+.poketype {
+    border-radius: 15px;
+    border: 2px solid black;
+    width: fit-content;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/*pokeCard*/
+
+.pokemon-info-card {
+    border: 1px solid rgba(122, 122, 122, 0.15);
+    border-radius: 10px;
+    z-index: 2;
+    width: 350px;
+}
+
+.arrow-back {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    z-index: 999;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.arrow-back:hover {
+    cursor: pointer;
+}
+
+.poke-nav {
+    margin-top: 38px;
+    display: flex;
+}
+
+.poke-nav a {
+    margin: 5px;
+}
+
+.poke-nav a:hover {
+    cursor: pointer;
+}
+
+#pokecard {
+    width: 350px;
+    height: 30vh;
+    color: rgb(92, 92, 92);
+    display: flex;
+    padding: 24px;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+
+
+#pokemonAttacks {
+    font-weight: 500;
+    width: fit-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px;
+    border: rgba(128, 128, 128, 0.15) 1px solid;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+
+.info-container {
+
+    width: 350px;
+    background-color: rgb(247, 247, 247);
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: -40px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pokemon-type-btn {
+    color: white;
+    background-color: rgba(70, 65, 65, 0.7);
+    display: flex;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+#pokemonImage {
+    position: flex;
+    min-height: 200px;
+    top: 100px;
+}
+
+/*renderedPokemonCards*/
+
+.renderedPokemonCards {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pokepic {
+    margin-top: 50px;
+    height: 160px;
+}
+
+/*Pokemon-Nav*/
+
+.poke-nav a {
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+/*ABILITIES*/
+
+.abilities {
+    font-weight: 500;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px;
+    width: fit-content;
+    border: rgba(128, 128, 128, 0.15) 1px solid;
+    border-radius: 8px;
+    padding: 3px;
+}
+
+#statsHeader {
+    text-decoration: underline;
+}
+
+/*stats&progress*/
+
+#stats {
+    margin: 15px;
+    width: 90%;
+}
+
+.stats-class {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress {
+    width: 60%;
+    cursor: not-allowed;
+}
