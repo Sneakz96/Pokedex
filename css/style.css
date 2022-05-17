@@ -1,7 +1,8 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'amaranth-regular', 'latin';
     padding: 0;
     margin: 0;
+    background-color: rgb(246, 246, 246);
 }
 
 
@@ -58,6 +59,7 @@ a:hover {
 .input-searchbar {
     line-height: 21px;
     border: none;
+    background-color: rgb(246, 246, 246);;
 }
 
 .input-searchbar:focus {
@@ -73,7 +75,7 @@ a:hover {
     transform: scale(1.05);
 }
 
-/*main*/
+/*MAIN*/
 
 .main {
     display: flex;
@@ -82,7 +84,7 @@ a:hover {
 }
 
 
-/* pokedex*/
+/*POKEDEX*/
 
 .pokedex {
     display: flex;
@@ -128,10 +130,26 @@ a:hover {
 /*pokeCard*/
 
 .pokemon-info-card {
-    border: 1px solid rgba(122, 122, 122, 0.15);
+    border: 0.5px solid rgba(66, 66, 66, 0.7);
     border-radius: 10px;
     z-index: 2;
     width: 350px;
+}
+
+.poke-number {
+    color: rgb(92, 92, 92);
+    position: absolute;
+    margin-bottom: 220px;
+    margin-right: 120px;
+    font-weight: 700;
+}
+
+.poke-name {
+    margin-top: 15px;
+}
+
+.poke-name::first-letter {
+    text-transform: uppercase;
 }
 
 .arrow-back {
@@ -173,32 +191,19 @@ a:hover {
 
 
 
-#pokemonAttacks {
-    font-weight: 500;
-    width: fit-content;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 15px;
-    border: rgba(128, 128, 128, 0.15) 1px solid;
-    border-radius: 8px;
-    padding: 3px;
-}
-
 
 .info-container {
-
-    width: 350px;
+    width: 100%;
     background-color: rgb(247, 247, 247);
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     margin-top: -40px;
-    min-height: 300px;
+    height: 280px;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 }
 
 .pokemon-type-btn {
@@ -225,7 +230,7 @@ a:hover {
 }
 
 .pokepic {
-    margin-top: 50px;
+    margin-top: 20px;
     height: 160px;
 }
 
@@ -236,25 +241,11 @@ a:hover {
     margin-top: 15px;
 }
 
-/*ABILITIES*/
-
-.abilities {
-    font-weight: 500;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 15px;
-    width: fit-content;
-    border: rgba(128, 128, 128, 0.15) 1px solid;
-    border-radius: 8px;
-    padding: 3px;
-}
-
 #statsHeader {
     text-decoration: underline;
 }
 
-/*stats&progress*/
+/*STATS*/
 
 #stats {
     margin: 15px;
@@ -271,7 +262,43 @@ a:hover {
     align-items: center;
 }
 
+/*PROGRESS*/
+
 .progress {
     width: 60%;
     cursor: not-allowed;
+}
+
+/*ATTACKS*/
+
+.attacks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.pokemon-attacks{
+    margin: 3px;
+    padding: 3px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 8px;
+}
+
+/*ABILITIES*/
+
+.abilities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.pokemon-abilities {
+    margin: 3px;
+    padding: 3px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    border-radius: 8px;
 }

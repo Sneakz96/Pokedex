@@ -79,7 +79,6 @@ background-color: rgb(109, 101, 101);
 
 .d-none {
     display: none;
-
 }
 
 .d-center {
@@ -90,4 +89,10 @@ background-color: rgb(109, 101, 101);
 
 .w-100 {
     width: 100%;
+}
+
+/*ACTION ROOT*/
+
+.name::first-letter {
+    text-transform: uppercase;
 }
