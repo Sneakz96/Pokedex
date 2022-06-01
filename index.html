@@ -34,13 +34,15 @@
         </a>
         <div class="searchbar">
             <img src="./img/search-2-32.png" onclick="searchPokemon()">
-            <input id="searchBar" class="input-searchbar" type="text" onkeypress="searchPokemon()">
-            <img src="./img/x-mark-5-32.png">
+            <input id="searchBar" class="input-searchbar" type="text" onkeyup="searchPokemon()">
+            <img src="./img/x-mark-5-32.png" onclick="clearSearchbar()">
         </div>
         <img class="pokeball" src="./img/favicon.png">
     </div>
     <div class="main">
-        <div id="pokedex" class="pokedex"></div>
+        <img id="loadingScreen" class="loading-screen" src="./img/loading.png">
+        <div id="pokedex" class="pokedex">
+        </div>
         <div id="renderedPokemonCards" class="renderedPokemonCards d-none"></div>
     </div>
 </body>
