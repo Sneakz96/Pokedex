@@ -2,7 +2,7 @@ body {
     font-family: 'amaranth-regular', 'latin';
     padding: 0;
     margin: 0;
-    background-color: rgb(246, 246, 246);
+    background-color: rgba(180, 180, 180, 0.4);
 }
 
 /*LOADING SCREEN*/

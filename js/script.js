@@ -4,6 +4,7 @@ let currentPokemons = [];
 let offset = 0;
 let limit = 151;
 let functionBool = true;
+let stepsize = 20;
 
 //INIT FUNCTION ---> ONLOAD
 async function init() {
@@ -21,7 +22,6 @@ async function loadPokemons() {
         currentPokemon = await response.json();
         allPokemons.push(currentPokemon);
         currentPokemons.push(currentPokemon);
-        console.log(currentPokemon);
     }
 }
 
@@ -59,8 +59,7 @@ function renderPokemonAttacks(foundPokemon) {
     }
 }
 
-
-
+// 
 function renderPokemonAbilities(foundPokemon) {
     let pokeAbilitiesContainer = document.getElementById('pokemonAbilities');
 
@@ -71,7 +70,7 @@ function renderPokemonAbilities(foundPokemon) {
     }
 }
 
-//FIRST FUNCTION FOR THE POKECARDMENU
+// FIRST FUNCTION FOR THE POKECARDMENU
 function changeOnStats() {
     document.getElementById('statsHeader').style.textDecoration = "underline";
     document.getElementById('attacksHeader').style.textDecoration = "none";
@@ -81,7 +80,7 @@ function changeOnStats() {
     document.getElementById('pokemonAttacks').classList.add('d-none');
 }
 
-//SECOND FUNCTION FOR THE POKECARDMENU
+// SECOND FUNCTION FOR THE POKECARDMENU
 function changeOnAttacks() {
     document.getElementById('statsHeader').style.textDecoration = "none";
     document.getElementById('attacksHeader').style.textDecoration = "underline";
@@ -91,7 +90,7 @@ function changeOnAttacks() {
     document.getElementById('pokemonAttacks').classList.remove('d-none');
 }
 
-//THIRD FUNCTION FOR THE POKECARDMENU
+// THIRD FUNCTION FOR THE POKECARDMENU
 function changeOnAbilities() {
     document.getElementById('statsHeader').style.textDecoration = "none";
     document.getElementById('attacksHeader').style.textDecoration = "none";
@@ -101,20 +100,20 @@ function changeOnAbilities() {
     document.getElementById('pokemonAttacks').classList.add('d-none');
 }
 
-//CLOSE BIG POKEMON-CARD
+// CLOSE BIG POKEMON-CARD
 function quitDetailCard() {
     document.getElementById('renderedPokemonCards').classList.add('d-none');
     document.getElementById('pokedex').classList.remove('d-none');
 }
 
-//PREFUNCTION FOR SEARCH
+// PREFUNCTION FOR SEARCH
 async function getSearchedPokemon() {
     let searchInput = document.getElementById('myInput').value;
     let foundPokemonNames = namesOfAllPokemon.filter(pokemon => pokemon.includes(searchInput));
     searchPokemon(foundPokemonNames);
 }
 
-//FUNCTION FOR SEARCHBAR
+// FUNCTION FOR SEARCHBAR
 async function searchPokemon() {
     currentPokemons = [];
     let search = document.getElementById('searchBar').value;
@@ -125,19 +124,32 @@ async function searchPokemon() {
             currentPokemons.push(allPokemons[i]);
         }
     }
+    checkEmptySearchbar();
+}
+
+// 
+function checkEmptySearchbar() {
+    if (currentPokemons.length === 0) {
+        document.getElementById('emptyCard').classList.remove('d-none');
+    }else{
+        document.getElementById('emptyCard').classList.add('d-none');
+    }
     renderPokedex();
 }
 
+// CLEAR OUT SEARCHBAR
 function clearSearchbar() {
+    init();
+    document.getElementById('emptyCard').classList.add('d-none');
     document.getElementById('searchBar').value = '';
 }
 
-//FUNCTION US NOT INCLUDED
+// ALERT FUNCTION 
 function notIncluded() {
     alert('not included yet');
 }
 
-let stepsize = 20;
+// ONSCROLL FUNCTION
 window.onscroll = async function scroll() {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight && functionBool) {
         functionBool = false;
@@ -147,7 +159,7 @@ window.onscroll = async function scroll() {
     }
 };
 
-
+// FUNCTION AUTOMATICALLY LOAD NEXT POKEMONS
 async function loadMorePokemons() {
     for (let i = limit - stepsize; i < limit; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
@@ -155,7 +167,6 @@ async function loadMorePokemons() {
         currentPokemon = await response.json();
         allPokemons.push(currentPokemon);
         currentPokemons.push(currentPokemon);
-        console.log(currentPokemon.length);
         pokedex.innerHTML += renderPokemons(currentPokemons, i);
     }
 }
