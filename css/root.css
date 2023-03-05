@@ -1,27 +1,64 @@
-/*COLOR ROOT*/
+/*HEADER*/
+
+h1 {
+    font-size: 40px;
+}
+
+h1:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+h2 {
+    color: rgb(92, 92, 92);
+}
+
+/*ROOT_CLASSES*/
+
+a {
+    text-decoration: none;
+    color: rgb(92, 92, 92);
+}
+
+.d-none {
+    display: none;
+}
+
+.d-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+
+/*COLOR_CLASSES*/
 
 .color_bg_grass {
-    background-color: rgba(20, 141, 28, 0.75);
+    background: linear-gradient(to bottom, #1ec229bf, #148d1cbf);
 }
 
 .color_bg_water {
-    background-color: rgb(86, 145, 248);
+    background: linear-gradient(to bottom, #82a5e2, #1b50ac);
 }
 
 .color_bg_fire {
-    background-color: rgba(255, 0, 0, 0.79);
+    background: linear-gradient(to bottom, #ec4646c9, #c30202c9);
 }
 
 .color_bg_electric {
-    background-color: rgba(229, 109, 34, 0.846);
+    background: linear-gradient(to bottom, #efa475f5, #ff6200d8);
 }
 
 .color_bg_psychic {
-    background-color: rgba(255, 255, 0, 0.55);
+    background: linear-gradient(to bottom, #c3c34cd5, #ddf446);
 }
 
 .color_bg_bug {
-    background-color: rgba(36, 119, 37, 0.75);
+    background: linear-gradient(to bottom, #40af47bf, #0c5010bf);
 }
 
 .color_bg_earth {
@@ -29,23 +66,23 @@
 }
 
 .color_bg_poison {
-    background-color: rgba(187, 0, 255, 0.3);
+    background: linear-gradient(to bottom, #bb00ff6a, #7c0fa396);
 }
 
 .color_bg_dark {
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: #808080b3;
 }
 
 .color_bg_dragon {
-    background-color: rgba(19, 149, 97, 0.6);
+    background-color: #13956199;
 }
 
 .color_bg_rock {
-    background-color: rgba(128, 128, 128, 0.7);
+    background: linear-gradient(to bottom, #d7d7d7b3, #808080b3);
 }
 
 .color_bg_normal {
-    background-color: rgba(104, 67, 67, 0.756);
+    background: linear-gradient(to bottom, #b58686c1, #684343ec);
 }
 
 .color_bg_ice {
@@ -57,7 +94,7 @@
 }
 
 .color_bg_ground {
-    background-color: rgba(117, 81, 47, 0.8);
+    background: linear-gradient(to bottom, #b58686c1, #684343ec);
 }
 
 .color_bg_fairy {
@@ -73,23 +110,14 @@
 }
 
 .color_bg_steel {
-    background-color: rgb(133, 124, 124);
+    background: linear-gradient(to bottom, #d7d7d7b3, #857c7c);
 }
 
-/*ROOT*/
+/*COLOR_ROOT*/
 
-.d-none {
-    display: none;
-}
-
-.d-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.w-100 {
-    width: 100%;
+:root {
+    --bg-blue: #1f5596;
+    --bg-yellow: rgb(255, 204, 1);
 }
 
 /*ACTION ROOT*/

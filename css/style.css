@@ -1,8 +1,14 @@
+@font-face {
+    font-family: 'nintendo';
+    src: url('font/Early_GameBoy.ttf');
+    /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
 body {
-    font-family: 'amaranth-regular', 'latin';
     padding: 0;
     margin: 0;
-    background-color: rgba(180, 180, 180, 0.4);
+    /* background: linear-gradient(to right top, #c6c6c6, #ffffff); */
+    font-family: 'nintendo';
 }
 
 /*LOADING SCREEN*/
@@ -25,35 +31,22 @@ body {
     z-index: 999;
     background-color: rgb(235, 235, 235);
     width: 100%;
+    box-shadow: 0 0 4px 0;
 }
 
-h1 {
-    font-size: 40px;
+.logo {
+    height: 60px;
 }
-
-h1:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-h2 {
-    color: rgb(92, 92, 92);
-}
-
-a {
-    text-decoration: none;
-    color: rgb(92, 92, 92);
-}
-
-a:hover {
-    color: rgb(92, 92, 92);
+.search{
+    margin-top: 30px;
+    width: 320px;
 }
 
 .searchbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid var(--bg-blue);
     padding: 5px;
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
@@ -71,6 +64,7 @@ a:hover {
 }
 
 .input-searchbar {
+    width: 200px;
     line-height: 21px;
     border: none;
     background-color: rgb(235, 235, 235);
@@ -78,6 +72,11 @@ a:hover {
 
 .input-searchbar:focus {
     outline: none;
+}
+
+.search-text {
+    color: var(--bg-blue);
+    font-size: 12px;
 }
 
 .pokeball {
@@ -98,6 +97,11 @@ a:hover {
     flex-direction: column;
 }
 
+.background-img {
+    width: 100%;
+    /* opacity: 0.8; */
+    background-image: url('img/e472a4508575b6704637d9ba551b9eda.png');
+}
 
 /*POKEDEX*/
 
@@ -107,11 +111,12 @@ a:hover {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+
 }
 
-
 .pokemon-preview {
-    border: 1px solid rgba(0, 0, 0, 0,2);
+    border: 1px solid rgba(0, 0, 0, 0, 2);
+    box-shadow: 0px 0px 2px 1px;
     border-radius: 15px;
     padding: 15px;
     margin: 20px;
@@ -137,16 +142,19 @@ a:hover {
 
 .poketype {
     border-radius: 15px;
-    border: 2px solid black;
+    box-shadow: 0 0 3px 0;
+    border: 1px solid rgba(0, 0, 0, 0.75);
     width: fit-content;
     padding-left: 8px;
     padding-right: 8px;
+    font-size: 12px;
+    color: black;
 }
 
 /*pokeCard*/
 
 .pokemon-info-card {
-    border: 0.5px solid rgba(66, 66, 66, 0.7);
+    border: 0.5px solid rgba(0, 0, 0, 0.75);
     border-radius: 10px;
     z-index: 2;
     width: 350px;
@@ -154,15 +162,18 @@ a:hover {
 }
 
 .poke-number {
-    color: rgb(92, 92, 92);
+    color: rgba(0, 0, 0, 0.75);
     position: absolute;
-    margin-bottom: 220px;
+    margin-bottom: 210px;
     margin-right: 120px;
     font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .poke-name {
+    font-size: 16px;
     margin-top: 15px;
+    color: rgba(0, 0, 0, 0.75);
 }
 
 .poke-name::first-letter {
@@ -234,6 +245,11 @@ a:hover {
     top: 100px;
 }
 
+.empty-card-p{
+    color: var(--bg-blue);
+}
+
+
 /*renderedPokemonCards*/
 
 .renderedPokemonCards {
@@ -244,7 +260,7 @@ a:hover {
 }
 
 .pokepic {
-    margin-top: 10px;
+    
     height: 180px;
 }
 
