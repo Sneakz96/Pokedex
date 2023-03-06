@@ -9,7 +9,7 @@ function renderPokemons(allPokemons, i) {
     <img class="pokeball-bg" src="img/pokeball_bg.png">
     <img id="pokePicture_${i}" class="small-pokemons" src="${allPokemons[i]['sprites']['other']['official-artwork']['front_default']}">
     <div class="poke-card-footer">
-        <img id="pokescircle_${i}" class="class-circle" src="">
+        <img id="pokescircle_${i}" class="class-circle">
     </div>
     </div>`
 }
@@ -18,8 +18,10 @@ function renderPokemons(allPokemons, i) {
 function renderDetailCard(foundPokemon, i) {
     return /*html*/`
     <div id="pokemonCard_${i}" class="pokemon-info-card  color_bg_${foundPokemon['types'][0]['type']['name']}">
-    <img class="arrow-back"  onclick="quitDetailCard(${i})" src="./img/arrow-121-32.png">
-    <img id="pokescircle_${i}" class="pokemon-class-circle" src="">
+    <img class="left" src="./img/icon/left_black.png">
+    <img class="right" src="./img/icon/right_black.png">
+    <img class="close"  onclick="quitDetailCard(${i})" src="./img/icon/close_black.png">
+    <img id="pokescircle_${i}" class="pokemon-class-circle">
         <div id="pokecard">
            <h2 id="pokemonName_${i}" class="pokemon-name">${foundPokemon['name']}</h2>
             <div class="pokemon-type-btn">

@@ -35,13 +35,6 @@
     }
 
     /*HEADER*/
-    .loading-screen {
-        margin-left: 100%;
-        margin-top: 40%;
-        position: fixed;
-        height: 150px;
-    }
-
     .header {
         height: 190px;
         display: flex;
