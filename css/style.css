@@ -112,24 +112,45 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-
 }
 
 .pokemon-preview {
     border: 1px solid rgba(0, 0, 0, 0, 2);
     box-shadow: 0px 0px 2px 1px;
     border-radius: 15px;
-    padding: 15px;
+    /* padding: 15px; */
     margin: 20px;
     width: 210px;
+    height: 250px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
 
 .pokemon-preview:hover {
     cursor: pointer;
+}
+
+.poke-card-head {
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    background-color: #1c1a20;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.poke-number {
+    color: white;
+    font-weight: 700;
+}
+
+.poke-name {
+    color: white;
+    font-size: 16px;
 }
 
 .small-pokemons {
@@ -143,6 +164,14 @@ body {
     cursor: pointer;
 }
 
+.pokeball-bg {
+    position: absolute;
+    z-index: 1;
+    height: 140px;
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
 .poketype {
     border-radius: 15px;
     box-shadow: 0 0 3px 0;
@@ -151,7 +180,15 @@ body {
     padding-left: 8px;
     padding-right: 8px;
     font-size: 12px;
-    color: black;
+    color: white;
+}
+
+.poke-card-footer {
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: #1c1a20;
+    height: 50px;
+    width: 100%;
 }
 
 /*pokeCard*/
@@ -162,33 +199,6 @@ body {
     z-index: 2;
     width: 350px;
     margin-top: 25px;
-}
-
-.poke-number {
-    color: rgba(0, 0, 0, 0.75);
-    position: absolute;
-    margin-bottom: 210px;
-    margin-right: 120px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.poke-name {
-    font-size: 16px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    color: rgba(0, 0, 0, 0.75);
-}
-
-.poke-name::first-letter {
-    text-transform: uppercase;
-}
-
-.pokeball-bg {
-    position: absolute;
-    z-index: 1;
-    margin-top: 20px;
-    margin-left: 70px;
 }
 
 .arrow-back {

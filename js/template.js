@@ -1,11 +1,15 @@
 function renderPokemons(allPokemons, i) {
     return `
     <div id="pokePreview_${i}" class="pokemon-preview color_bg_${allPokemons[i]['types'][0]['type']['name']}" onclick="openDetailCard(${allPokemons[i]['id']})">
-    <div id="pokenumber_${i}" class="poke-number">#${allPokemons[i]['id']}</div>
-    <h2 id="pokeName_${i}" class="poke-name">${allPokemons[i]['name']}</h2>
+    <div class="poke-card-head">
+        <div id="pokenumber_${i}" class="poke-number">#${allPokemons[i]['id']}</div>
+        <h2 id="pokeName_${i}" class="poke-name">${allPokemons[i]['name']}</h2>
+    </div>
     <img class="pokeball-bg" src="img/pokeball_bg.png">
     <img id="pokePicture_${i}" class="small-pokemons" src="${allPokemons[i]['sprites']['other']['official-artwork']['front_default']}">
-    <div id="poketype_${i}" class="poketype">${allPokemons[i]['types'][0]['type']['name']}</div>
+    <div class="poke-card-footer">
+        <div id="poketype_${i}" class="poketype">${allPokemons[i]['types'][0]['type']['name']}</div>
+    </div>
     </div>`
 }
 
