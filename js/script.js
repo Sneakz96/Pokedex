@@ -16,6 +16,7 @@ async function init() {
 
 // LOAD POKEMONS FROM API
 async function loadPokemons() {
+    console.log('Loading called');
     for (let i = offset; i < offset + limit; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
         let response = await fetch(url);
@@ -23,6 +24,7 @@ async function loadPokemons() {
         allPokemons.push(currentPokemon);
         currentPokemons.push(currentPokemon);
     }
+    console.log('Loading rdy');
 }
 
 // RENDER & CREATE POKEDEX

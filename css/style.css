@@ -14,7 +14,10 @@ body {
 /*LOADING SCREEN*/
 
 .loading-screen {
-    height: 200px;
+    margin-left: 100%;
+    margin-top: 10%;
+    position: fixed;
+    height: 350px;
 }
 
 /*HEADER*/
