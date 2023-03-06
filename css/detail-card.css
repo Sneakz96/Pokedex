@@ -6,6 +6,13 @@
 }
 
 /*ICONS*/
+.left:hover {
+    cursor: pointer;
+}
+
+.right:hover {
+    cursor: pointer;
+}
 
 /*ICONS*/
 /*CARD_INDOS*/
@@ -26,7 +33,6 @@
 .pokemon-class-circle {
     height: 40px;
     width: 40px;
-    background-color: #1c1a20 !important;
 }
 
 .pokemon-name {
@@ -49,7 +55,7 @@
 
 .info-container {
     width: 100%;
-    background-color: rgb(247, 247, 247);
+    background-color: var(--grey);
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 8px;

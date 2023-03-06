@@ -73,7 +73,7 @@ a {
 }
 
 .color_bg_dragon {
-    background: linear-gradient(to bottom,#24f3a0, #139561);
+    background: linear-gradient(to bottom, #24f3a0, #139561);
 }
 
 .color_bg_rock {
@@ -115,6 +115,7 @@ a {
 /*COLOR_ROOT*/
 
 :root {
-    --bg-blue: #1f5596;
+    --bg-blue: rgb(31, 85, 150);
     --bg-yellow: rgb(255, 204, 1);
+    --grey: rgb(210, 210, 210);
 }
