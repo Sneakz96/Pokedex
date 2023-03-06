@@ -36,8 +36,8 @@ function renderPokedex() {
 
 //OPEN BIG POKEMON-CARD
 function openDetailCard(id) {
-    const foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
-    const i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
+    let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
+    let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
     let pokemonCards = document.getElementById('renderedPokemonCards');
 
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
@@ -131,7 +131,7 @@ async function searchPokemon() {
 function checkEmptySearchbar() {
     if (currentPokemons.length === 0) {
         document.getElementById('emptyCard').classList.remove('d-none');
-    }else{
+    } else {
         document.getElementById('emptyCard').classList.add('d-none');
     }
     renderPokedex();
@@ -169,4 +169,12 @@ async function loadMorePokemons() {
         currentPokemons.push(currentPokemon);
         pokedex.innerHTML += renderPokemons(currentPokemons, i);
     }
+}
+
+function carousel() {
+    let myCarousel = document.getElementById('carousel');
+    let carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 2000,
+        wrap: false
+    })
 }

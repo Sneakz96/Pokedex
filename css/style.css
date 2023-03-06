@@ -37,7 +37,8 @@ body {
 .logo {
     height: 60px;
 }
-.search{
+
+.search {
     margin-top: 30px;
     width: 320px;
 }
@@ -132,7 +133,9 @@ body {
 }
 
 .small-pokemons {
-    height: 150px;
+    z-index: 2;
+    margin-left: 70px;
+    height: 100px;
 }
 
 .small-pokemons:hover {
@@ -173,11 +176,19 @@ body {
 .poke-name {
     font-size: 16px;
     margin-top: 15px;
+    margin-bottom: 15px;
     color: rgba(0, 0, 0, 0.75);
 }
 
 .poke-name::first-letter {
     text-transform: uppercase;
+}
+
+.pokeball-bg {
+    position: absolute;
+    z-index: 1;
+    margin-top: 20px;
+    margin-left: 70px;
 }
 
 .arrow-back {
@@ -245,7 +256,7 @@ body {
     top: 100px;
 }
 
-.empty-card-p{
+.empty-card-p {
     color: var(--bg-blue);
 }
 
@@ -260,7 +271,7 @@ body {
 }
 
 .pokepic {
-    
+
     height: 180px;
 }
 

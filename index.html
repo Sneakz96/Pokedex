@@ -41,16 +41,56 @@
     </div>
     <img src="" class="background-img">
     <div class="main">
+
+
+        <div class="overlay">
+            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- <div class="carousel-item active">
+                    <img src="img/map.jpeg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="img/new.jpeg" class="d-block w-100" alt="...">
+                  </div> -->
+                    <div class="carousel-item active">
+                        <div id="renderedPokemonCards" class="renderedPokemonCards d-none"></div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        
         <img id="loadingScreen" class="loading-screen" src="./img/loading.png">
 
         <div id="pokedex" class="pokedex">
         </div>
-        
-        <div id="renderedPokemonCards" class="renderedPokemonCards d-none"></div>
-        
+
+
+
         <div id="emptyCard" class="empty-card d-none">
             <p class="empty-card-p">We haven't found any pokemon matching your search!</p>
         </div>
+
     </div>
 </body>
 

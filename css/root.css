@@ -74,7 +74,7 @@ a {
 }
 
 .color_bg_dragon {
-    background-color: #13956199;
+    background: linear-gradient(to bottom,#24f3a07d, #13956199);
 }
 
 .color_bg_rock {
