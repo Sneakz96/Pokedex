@@ -29,7 +29,7 @@ body {
     align-items: center;
     height: 100px;
     z-index: 999;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(181, 181, 181);
     width: 100%;
     box-shadow: 0 0 4px 0;
 }
@@ -92,6 +92,10 @@ body {
 /*MAIN*/
 
 .main {
+    /* background-color: rgb(83, 68, 68); */
+    background-image: url('../img/map.jpeg');
+    background-size: cover;
+    height: 100vh;
     margin-top: 100px;
     display: flex;
     align-items: center;
@@ -194,12 +198,13 @@ body {
     color: white;
 }
 
-.class-circle{
-    background-color: white;
+.class-circle {
+    padding: 3px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     box-shadow: 0 0 3px 0;
+    z-index: 3;
 }
 
 /*pokeCard*/
@@ -225,6 +230,30 @@ body {
     cursor: pointer;
 }
 
+.pokemon-class-circle{
+    height: 40px;
+    width: 40px;
+    background-color: #1c1a20 !important;
+}
+
+.pokemon-name {
+    color: #1c1a20;
+}
+
+.pokepic {
+    z-index: 2;
+    margin-right: 20px;
+    height: 180px;
+}
+
+.pokeball-card-bg {
+    margin-left: 80px;
+    width: 200px;
+    height: 200px;
+    margin-top: 70px;
+    position: absolute;
+}
+
 .poke-nav {
     margin-top: 38px;
     display: flex;
@@ -241,7 +270,8 @@ body {
 #pokecard {
     width: 350px;
     height: 30vh;
-    color: rgb(92, 92, 92);
+    color: #1c1a20;
+    ;
     display: flex;
     padding: 24px;
     align-items: center;
@@ -265,7 +295,8 @@ body {
 
 .pokemon-type-btn {
     color: white;
-    background-color: rgba(70, 65, 65, 0.7);
+    background-color: rgba(28, 26, 32, 0.75);
+    ;
     display: flex;
     padding: 4px;
     border-radius: 8px;
@@ -291,10 +322,7 @@ body {
     justify-content: center;
 }
 
-.pokepic {
 
-    height: 180px;
-}
 
 /*Pokemon-Nav*/
 

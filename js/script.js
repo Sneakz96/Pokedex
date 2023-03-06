@@ -6,16 +6,15 @@ let limit = 151;
 let functionBool = true;
 let stepsize = 20;
 
-//INIT FUNCTION ---> ONLOAD
+// INIT FUNCTION AT ONLOAD
 async function init() {
     document.getElementById('loadingScreen').classList.remove('d-none');
     await loadPokemons();
     renderPokedex();
-    getPokemonType();
     document.getElementById('loadingScreen').classList.add('d-none');
 }
 
-//LOAD POKEMONS FROM API
+// LOAD POKEMONS FROM API
 async function loadPokemons() {
     for (let i = offset; i < offset + limit; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i + 1}`;
@@ -26,16 +25,17 @@ async function loadPokemons() {
     }
 }
 
-//RENDER & CREATE POKEDEX
+// RENDER & CREATE POKEDEX
 function renderPokedex() {
     let pokedex = document.getElementById('pokedex');
     pokedex.innerHTML = '';
     for (let i = 0; i < currentPokemons.length; i++) {
         pokedex.innerHTML += renderPokemons(currentPokemons, i);
+        getPokemonType(i);
     }
 }
 
-//OPEN BIG POKEMON-CARD
+// OPEN BIG POKEMON-CARD
 function openDetailCard(id) {
     let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
@@ -47,9 +47,10 @@ function openDetailCard(id) {
 
     renderPokemonAttacks(foundPokemon);
     renderPokemonAbilities(foundPokemon);
+    getPokemonType(i);
 }
 
-
+// 
 function renderPokemonAttacks(foundPokemon) {
     let pokeAttackContainer = document.getElementById('pokemonAttacks');
 
@@ -145,11 +146,6 @@ function clearSearchbar() {
     document.getElementById('searchBar').value = '';
 }
 
-// ALERT FUNCTION 
-function notIncluded() {
-    alert('not included yet');
-}
-
 // ONSCROLL FUNCTION
 window.onscroll = async function scroll() {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight && functionBool) {
@@ -169,17 +165,91 @@ async function loadMorePokemons() {
         allPokemons.push(currentPokemon);
         currentPokemons.push(currentPokemon);
         pokedex.innerHTML += renderPokemons(currentPokemons, i);
+        getPokemonType(i);
     }
 }
 
-function carousel() {
-    let myCarousel = document.getElementById('carousel');
-    let carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 2000,
-        wrap: false
-    })
-}
+// function carousel() {
+//     let myCarousel = document.getElementById('carousel');
+//     let carousel = new bootstrap.Carousel(myCarousel, {
+//         interval: 2000,
+//         wrap: false
+//     })
+// }
 
-function getPokemonType(){
-    console.log('getPokemonType');
+function getPokemonType(i) {
+    let type = allPokemons[i]['types'][0]['type']['name'];
+    let circle = document.getElementById(`pokescircle_${i}`);
+    if (type == 'grass') {
+        circle.classList.add('color_bg_grass');
+        circle.src = "img/icons/grass.svg";
+    }
+    if (type == 'fire') {
+        circle.classList.add('color_bg_fire');
+        circle.src = "img/icons/fire.svg";
+    }
+    if (type == 'water') {
+        circle.classList.add('color_bg_water');
+        circle.src = "img/icons/water.svg";
+    }
+    if (type == 'bug') {
+        circle.classList.add('color_bg_bug');
+        circle.src = "img/icons/bug.svg";
+    }
+    if (type == 'dark') {
+        circle.classList.add('color_bg_dark');
+        circle.src = "img/icons/dark.svg";
+    }
+    if (type == 'dragon') {
+        circle.classList.add('color_bg_dragon');
+        circle.src = "img/icons/dragon.svg";
+    }
+    if (type == 'electric') {
+        circle.classList.add('color_bg_electric');
+        circle.src = "img/icons/electric.svg";
+    }
+    if (type == 'fairy') {
+        circle.classList.add('color_bg_fairy');
+        circle.src = "img/icons/fairy.svg";
+    }
+    if (type == 'fighting') {
+        circle.classList.add('color_bg_fighting');
+        circle.src = "img/icons/fighting.svg";
+    }
+    if (type == 'flying') {
+        circle.classList.add('color_bg_flying');
+        circle.src = "img/icons/flying.svg";
+    }
+    if (type == 'ghost') {
+        circle.classList.add('color_bg_ghost');
+        circle.src = "img/icons/ghost.svg";
+    }
+    if (type == 'ground') {
+        circle.classList.add('color_bg_ground');
+        circle.src = "img/icons/ground.svg";
+    }
+    if (type == 'ice') {
+        circle.classList.add('color_bg_ice');
+        circle.src = "img/icons/ice.svg";
+    }
+    if (type == 'poison') {
+        circle.classList.add('color_bg_poison');
+        circle.src = "img/icons/poison.svg";
+    }
+    if (type == 'normal') {
+        circle.classList.add('color_bg_normal');
+        circle.src = "img/icons/normal.svg";
+    }
+    if (type == 'steel') {
+        circle.classList.add('color_bg_steel');
+        circle.src = "img/icons/steel.svg";
+    }
+    if (type == 'rock') {
+        circle.classList.add('color_bg_rock');
+        circle.src = "img/icons/rock.svg";
+    }
+    if (type == 'psychic') {
+        circle.classList.add('color_bg_psychic');
+        circle.src = "img/icons/psychic.svg";
+    }
 }
