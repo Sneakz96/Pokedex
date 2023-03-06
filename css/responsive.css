@@ -27,9 +27,12 @@
         bottom: -30px;
     }
 
+    .pokeball:hover {
+        transform: none;
+    }
+
     .loading-screen {
-        margin-left: 100%;
-        margin-top: 10%;
+        margin-top: 40%;
         position: fixed;
         height: 150px;
     }
@@ -71,16 +74,13 @@
         margin-bottom: 5px;
     }
 
-    .pokeball:hover {
-        transform: none;
+    /*HEADER*/
+    .main {
+        margin-top: 190px;
     }
 
     .pokemon-preview:first-child {
         margin-top: 20px !important;
-    }
-
-    .main {
-        margin-top: 190px;
     }
 }
 
@@ -105,12 +105,7 @@
         width: 250px;
     }
 
-    h1 {
-        margin-top: 5px;
-    }
-
     #pokecard {
-        padding: 3px;
         width: 250px;
     }
 
@@ -132,24 +127,7 @@
         margin-bottom: 5px;
     }
 
-    h1:hover {
-        transform: none;
-    }
+    /*DETAIL_CARD*/
 
-
-    .pokeball:hover {
-        transform: none;
-    }
-
-    .renderedPokemonCards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-
-    .main {
-        margin-top: 190px;
-    }
+    /*DETAIL_CARD*/
 }
