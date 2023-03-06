@@ -1,3 +1,4 @@
+// GENERATE SMALL CARDS IN POKEDEX
 function renderPokemons(allPokemons, i) {
     return /*html*/`
     <div id="pokePreview_${i}" class="pokemon-preview color_bg_${allPokemons[i]['types'][0]['type']['name']}" onclick="openDetailCard(${allPokemons[i]['id']})">
@@ -13,7 +14,7 @@ function renderPokemons(allPokemons, i) {
     </div>`
 }
 
-
+// GENERATE BIG CARDS WHEN OPEN
 function renderDetailCard(foundPokemon, i) {
     return /*html*/`
     <div id="pokemonCard_${i}" class="pokemon-info-card  color_bg_${foundPokemon['types'][0]['type']['name']}">
