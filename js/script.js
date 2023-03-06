@@ -11,6 +11,7 @@ async function init() {
     document.getElementById('loadingScreen').classList.remove('d-none');
     await loadPokemons();
     renderPokedex();
+    getPokemonType();
     document.getElementById('loadingScreen').classList.add('d-none');
 }
 
@@ -177,4 +178,8 @@ function carousel() {
         interval: 2000,
         wrap: false
     })
+}
+
+function getPokemonType(){
+    console.log('getPokemonType');
 }

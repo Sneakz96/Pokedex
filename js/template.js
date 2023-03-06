@@ -9,6 +9,7 @@ function renderPokemons(allPokemons, i) {
     <img id="pokePicture_${i}" class="small-pokemons" src="${allPokemons[i]['sprites']['other']['official-artwork']['front_default']}">
     <div class="poke-card-footer">
         <div id="poketype_${i}" class="poketype">${allPokemons[i]['types'][0]['type']['name']}</div>
+        <div class="class-circle"></div>
     </div>
     </div>`
 }
