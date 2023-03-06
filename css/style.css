@@ -1,17 +1,20 @@
+/*FONT*/
 @font-face {
     font-family: 'nintendo';
     src: url('font/Early_GameBoy.ttf');
     /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
+/*FONT*/
+/*BODY*/
 body {
     padding: 0;
     margin: 0;
     font-family: 'nintendo';
 }
 
+/*BODY*/
 /*LOADING SCREEN*/
-
 .loading-screen {
     margin-left: 100%;
     margin-top: 10%;
@@ -19,8 +22,8 @@ body {
     height: 350px;
 }
 
+/*LOADING SCREEN*/
 /*HEADER*/
-
 .header {
     position: fixed;
     top: 0;
@@ -91,12 +94,13 @@ body {
     transform: scale(1.05);
 }
 
+/*HEADER*/
 /*MAIN*/
-
 .main {
     position: absolute;
     top: 0;
     bottom: 0;
+    width: 100%;
     margin-top: 100px;
     display: flex;
     align-items: center;
@@ -112,11 +116,9 @@ body {
     background-image: url('../img/map.jpeg');
     filter: grayscale(80%);
     background-attachment: scroll;
-    background-repeat: repeat-y;
 }
 
 /*POKEDEX*/
-
 .pokedex {
     filter: unset !important;
     position: relative;
@@ -251,8 +253,6 @@ body {
     color: var(--bg-blue);
 }
 
-/*renderedPokemonCards*/
-
 .renderedPokemonCards {
     height: 100%;
     width: 100%;
@@ -260,7 +260,6 @@ body {
     justify-content: center;
 }
 
-/*Pokemon-Nav*/
 
 .poke-nav a {
     font-weight: 700;
