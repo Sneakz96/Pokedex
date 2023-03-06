@@ -118,6 +118,7 @@ body {
     background-attachment: scroll;
 }
 
+/*MAIN*/
 /*POKEDEX*/
 .pokedex {
     filter: unset !important;
@@ -144,6 +145,7 @@ body {
 
 .pokemon-preview:hover {
     cursor: pointer;
+    transform: scale(1.05);
 }
 
 .poke-card-head {
