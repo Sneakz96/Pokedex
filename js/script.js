@@ -5,7 +5,7 @@ let offset = 0;
 let limit = 151;
 let functionBool = true;
 let stepsize = 20;
-
+let cardIsOpen = false;
 let typeIcons = {
     grass: { class: 'color_bg_grass', src: 'img/icons/grass.svg' },
     fire: { class: 'color_bg_fire', src: 'img/icons/fire.svg' },
@@ -33,7 +33,7 @@ async function init() {
     await loadPokemons();
     renderPokedex();
     document.getElementById('loadingScreen').classList.add('d-none');
-
+    console.log(cardIsOpen);
 }
 
 // LOAD POKEMONS FROM API
@@ -60,25 +60,35 @@ function renderPokedex() {
 
 // OPEN BIG POKEMON-CARD
 function openDetailCard(id) {
+    cardIsOpen = true;
     let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
     let pokemonCards = document.getElementById('renderedPokemonCards');
     let type = allPokemons[i]['types'];
-
+    let card = `pokemonCard_${i}`;
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
-
+    // event.stopPropagation();
     renderPokemonAttacks(foundPokemon);
     renderPokemonAbilities(foundPokemon);
     checkSecondType(i);
     getPokemonType(i);
-
+    console.log(cardIsOpen);
+    console.log(card);
     if (type.length > 1) {
         addBgSec(i);
     }
 }
-
+function func1(event) {
+    event.stopPropagation();
+    console.log('overlay open?:',cardIsOpen);
+    cardIsOpen = false;
+    if (!cardIsOpen) {
+        console.log('close overlay',cardIsOpen);
+        quitDetailCard();
+    }
+}
 // 
 function renderPokemonAttacks(foundPokemon) {
     let pokeAttackContainer = document.getElementById('pokemonAttacks');
@@ -133,8 +143,10 @@ function changeOnAbilities() {
 
 // CLOSE BIG POKEMON-CARD
 function quitDetailCard() {
+    cardIsOpen = false;
     document.getElementById('renderedPokemonCards').classList.add('d-none');
     document.getElementById('pokedex').classList.remove('d-none');
+    console.log(cardIsOpen);
 }
 
 // PREFUNCTION FOR SEARCH
