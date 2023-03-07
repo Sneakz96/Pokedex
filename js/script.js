@@ -63,6 +63,7 @@ function openDetailCard(id) {
     let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
     let pokemonCards = document.getElementById('renderedPokemonCards');
+    let type = allPokemons[i]['types'];
 
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
@@ -72,6 +73,10 @@ function openDetailCard(id) {
     renderPokemonAbilities(foundPokemon);
     checkSecondType(i);
     getPokemonType(i);
+
+    if (type.length > 1) {
+        addBgSec(i);
+    }
 }
 
 // 
@@ -198,12 +203,22 @@ function checkSecondType(i) {
     let type = allPokemons[i]['types'];
     let secondType = document.getElementById(`pokescircle_two_${i}`);
     if (type.length > 1) {
-        let secType = allPokemons[i]['types'][1]['type']['name'];
+        let secType = type[1]['type']['name'];
         let typeIcon = typeIcons[secType];
         secondType.classList.remove('d-none');
         secondType.classList.add(typeIcon.class);
         secondType.src = typeIcon.src;
     }
+}
+
+function addBgSec(i) {
+    let type = allPokemons[i]['types'][1]['type']['name'];
+    let typeIcon = typeIcons[type];
+    let secondTypeContainer = document.getElementById(`secondTypeContainer_${i}`);
+    secondTypeContainer.classList.add(typeIcon.class);
+    // secondTypeContainer.classList.add(  allPokemons[i]['types'][0]['type']['name']);
+    console.log(secondTypeContainer);
+    console.log(i);
 }
 
 // GET TYPE OF POKEMONS

@@ -80,6 +80,17 @@
     width: 40px;
 }
 
+#pokecard {
+    width: 350px;
+    height: 30vh;
+    color: #1c1a20;
+    display: flex;
+    padding: 24px;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
 .pokemon-name {
     color: var(--dark);
     font-size: 23px;
