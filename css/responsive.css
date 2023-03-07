@@ -118,15 +118,14 @@
     }
 
     .left {
-        top: 105%;
+        top: 102%;
         left: 75px;
         border: unset;
     }
 
     .right {
-        top: 105%;
+        top: 102%;
         right: 75px;
-        padding-bottom: 20px;
         border: unset;
     }
 }
@@ -154,7 +153,7 @@
     }
 
     .info-container {
-        height: fit-content;
+        height: 230px;
     }
 
     .poke-name {
@@ -176,7 +175,9 @@
 
     /*DETAIL_CARD*/
     .poke-header {
-        width: 130%;
+        width: 125%;
+        right: 0;
+        left: 0;
     }
 
     .pokemon-name {
@@ -185,7 +186,7 @@
 
     .types {
         position: absolute;
-        top: 50px;
+        top: 100px;
         height: 70px;
         display: flex;
         flex-direction: column;
@@ -207,8 +208,6 @@
     .pokeball-card-bg {
         height: 80px;
         width: 80px;
-        margin-left: 0px !important;
-        margin-right: 120px;
         top: 20px;
     }
 

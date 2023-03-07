@@ -113,7 +113,7 @@ body {
     right: 0;
     bottom: 0;
     background-image: url('../img/map.jpeg');
-    filter: grayscale(80%);
+    filter: grayscale(80%) blur(1.5px);
     background-attachment: scroll;
 }
 

@@ -19,7 +19,7 @@ function renderPokemons(allPokemons, i) {
 function renderDetailCard(foundPokemon, i) {
     return /*html*/`
     <div id="pokemonCard_${i}" class="pokemon-info-card">
-    <img class="left" id="left" onclick="previousPokemon(${i})" src="./img/icon/left_black.png">
+    <img id="left" class="left" onclick="previousPokemon(${i})" src="./img/icon/left_black.png">
     <img class="right" onclick="nextPokemon(${i})" src="./img/icon/right_black.png">
     <div class="types">
         <div class="class color_bg_${allPokemons[i]['types'][0]['type']['name']}">
@@ -42,9 +42,9 @@ function renderDetailCard(foundPokemon, i) {
         </div>
         <div class="info-container">
             <nav class="poke-nav">
-                <a id="statsHeader" onclick="changeOnStats(${i})">Stats</a>
-                <a id="attacksHeader" onclick="changeOnAttacks(${i})">Attacks</a>
-                <a id="abilitiesHeader" onclick="changeOnAbilities(${i})">Abilities</a>
+                <a id="statsHeader" onclick="changeOnStats()">Stats</a>
+                <a id="attacksHeader" onclick="changeOnAttacks()">Attacks</a>
+                <a id="abilitiesHeader" onclick="changeOnAbilities()">Abilities</a>
             </nav>
             <div id="pokemonAttacks" class="attacks d-none">
             </div>
