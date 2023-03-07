@@ -238,14 +238,6 @@ body {
     border-radius: 10px;
 }
 
-.pokemon-type-btn {
-    color: white;
-    background-color: rgba(28, 26, 32, 0.75);
-    display: flex;
-    padding: 4px;
-    border-radius: 8px;
-}
-
 #pokemonImage {
     position: flex;
     min-height: 200px;
