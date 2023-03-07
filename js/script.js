@@ -33,7 +33,6 @@ async function init() {
     await loadPokemons();
     renderPokedex();
     document.getElementById('loadingScreen').classList.add('d-none');
-    console.log(cardIsOpen);
 }
 
 // LOAD POKEMONS FROM API
@@ -65,36 +64,35 @@ function openDetailCard(id) {
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
     let pokemonCards = document.getElementById('renderedPokemonCards');
     let type = allPokemons[i]['types'];
-    let card = `pokemonCard_${i}`;
+    
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
-    // event.stopPropagation();
+
     renderPokemonAttacks(foundPokemon);
     renderPokemonAbilities(foundPokemon);
     checkSecondType(i);
     getPokemonType(i);
-    console.log(cardIsOpen);
-    console.log(card);
     if (type.length > 1) {
         addBgSec(i);
     }
 }
-function func1(event) {
+
+// CLOSE OVERLAY
+function closeOverlay(event) {
     event.stopPropagation();
-    console.log('overlay open?:',cardIsOpen);
     cardIsOpen = false;
     if (!cardIsOpen) {
-        console.log('close overlay',cardIsOpen);
         quitDetailCard();
     }
 }
+
 // 
 function renderPokemonAttacks(foundPokemon) {
     let pokeAttackContainer = document.getElementById('pokemonAttacks');
 
     for (let i = 0; i < foundPokemon['abilities'].length; i++) {
-        const abilitie = foundPokemon['abilities'][i]['ability']['name'];
+        let abilitie = foundPokemon['abilities'][i]['ability']['name'];
         pokeAttackContainer.innerHTML += /*html*/`
         <div class="pokemon-attacks">${abilitie.replace(/^.{1}/g, abilitie[0].toUpperCase())}</div>`;
     }
@@ -105,7 +103,7 @@ function renderPokemonAbilities(foundPokemon) {
     let pokeAbilitiesContainer = document.getElementById('pokemonAbilities');
 
     for (let i = 0; i < foundPokemon['moves'].length; i++) {
-        const move = foundPokemon['moves'][i]['move']['name'];
+        let move = foundPokemon['moves'][i]['move']['name'];
         pokeAbilitiesContainer.innerHTML += /*html*/`
         <div class="pokemon-abilities">${move.replace(/^.{1}/g, move[0].toUpperCase())}</div>`;
     }
@@ -146,7 +144,6 @@ function quitDetailCard() {
     cardIsOpen = false;
     document.getElementById('renderedPokemonCards').classList.add('d-none');
     document.getElementById('pokedex').classList.remove('d-none');
-    console.log(cardIsOpen);
 }
 
 // PREFUNCTION FOR SEARCH
@@ -228,9 +225,6 @@ function addBgSec(i) {
     let typeIcon = typeIcons[type];
     let secondTypeContainer = document.getElementById(`secondTypeContainer_${i}`);
     secondTypeContainer.classList.add(typeIcon.class);
-    // secondTypeContainer.classList.add(  allPokemons[i]['types'][0]['type']['name']);
-    console.log(secondTypeContainer);
-    console.log(i);
 }
 
 // GET TYPE OF POKEMONS
@@ -242,12 +236,14 @@ function getPokemonType(i) {
     circle.src = typeIcon.src;
 }
 
-//
-function previosPokemon(i) {
-    console.log('previosPokemon', i - 1);
+// LOAD PREVIOUS DATAIL_CARD
+function previousPokemon(i) {
+    i--;
+    openDetailCard(allPokemons[i]['id'])
 }
 
-// 
+// LOAD NEXT DATAIL_CARD
 function nextPokemon(i) {
-    console.log('nextPokemon', i++);
+    i++;
+    openDetailCard(allPokemons[i]['id'])
 }

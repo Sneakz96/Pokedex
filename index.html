@@ -29,7 +29,6 @@
 <body onload="init()">
     <div class="header">
         <a href="#"><img src="./img/pokémon_logo.png" class="logo"></a>
-        <!-- <a href="#"><h1>My.Pokédex</h1></a> -->
         <div class="search">
             <div class="searchbar">
                 <img src="img/icon/search_blue.png">
@@ -40,25 +39,16 @@
         </div>
         <img class="pokeball" src="./img/icon/favicon.png">
     </div>
-
     <div class="main">
-        <div class="background" onclick="func1(event)"></div>
-        <div id="renderedPokemonCards" class="renderedPokemonCards d-none" >
+        <div class="background" onclick="closeOverlay(event)"></div>
+        <div id="renderedPokemonCards" class="renderedPokemonCards d-none">
         </div>
-
-
         <img id="loadingScreen" class="loading-screen" src="./img/loading.png">
-
-
         <div id="pokedex" class="pokedex">
         </div>
-
-
-
         <div id="emptyCard" class="empty-card d-none">
             <p class="empty-card-p">We haven't found any pokemon matching your search!</p>
         </div>
-
     </div>
 </body>
 
