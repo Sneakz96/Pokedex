@@ -67,7 +67,7 @@
 
     .pokepic {
         height: 180px;
-        margin-top: 0px;
+        margin-top: 80px;
     }
 
     .searchbar {
@@ -82,6 +82,7 @@
     .pokemon-preview:first-child {
         margin-top: 20px !important;
     }
+
     .empty-card {
         margin-top: 40px;
         width: 40%;
@@ -92,19 +93,49 @@
     .search-text {
         font-size: 8px;
     }
+
+    .pokeball-card-bg {
+        height: 120px;
+        width: 120px;
+        margin-left: 180px !important;
+    }
 }
 
 @media (max-width: 420px) {
     .pokemon-preview:first-child {
         margin-top: 80px;
     }
-    
+
     .empty-card {
         width: 80%;
+    }
+
+    .pokeball-card-bg {
+        height: 120px;
+        width: 120px;
+        margin-left: 180px !important;
+        top: 20px;
+    }
+
+    .left {
+        top: 105%;
+        left: 75px;
+    }
+
+    .right {
+        top: 105%;
+        right: 75px;
+        padding-bottom: 20px;
     }
 }
 
 @media (max-width: 300px) {
+    .header {
+        height: 190px;
+        display: flex;
+        flex-direction: column;
+    }
+
     .pokedex {
         margin-top: 30px;
     }
@@ -128,7 +159,7 @@
 
     .pokepic {
         height: 120px;
-        margin-top: 0px;
+        /* margin-top:0px; */
     }
 
     .searchbar {
@@ -136,6 +167,51 @@
     }
 
     /*DETAIL_CARD*/
+    .poke-header {
+        padding: 8px;
+    }
+
+    .pokemon-name {
+        font-size: 12px;
+    }
+
+    .types {
+        position: absolute;
+        top: 50px;
+        height: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .class {
+        width: 60px;
+        height: 30px;
+    }
+
+
+    .type {
+        border-radius: 50%;
+        padding: 3px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .pokeball-card-bg {
+        height: 80px;
+        width: 80px;
+        margin-left: 0px !important;
+        margin-right: 120px;
+        top: 20px;
+    }
+
+    .info-container a {
+        font-size: 8px;
+    }
+
+    .name {
+        font-size: 8px;
+    }
 
     /*DETAIL_CARD*/
 }
