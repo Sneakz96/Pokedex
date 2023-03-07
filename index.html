@@ -21,21 +21,21 @@
     <link rel="stylesheet" href="./css/root.css">
     <link rel="stylesheet" href="./css/responsive.css">
     <!--#FAVICON-->
-    <link rel="icon" type="image/png" href="./img/favicon.png">
+    <link rel="icon" type="image/png" href="./img/icon/favicon.png">
     <!--#TITLE-->
     <title>Pokédex</title>
 </head>
 
 <body onload="init()">
     <div class="header">
-        <a href="#"><img src="./img/pokémon_logo.png" class="logo"></a>
+        <a href="#"><img src="./img/icon/pokémon_logo.png" class="logo"></a>
         <div class="search">
-            <div class="searchbar">
+            <div class="searchbar" id="searchBox">
                 <img src="img/icon/search_blue.png">
                 <input id="searchBar" class="input-searchbar" type="text" onkeyup="searchPokemon()">
                 <img src="./img/icon/x_blue.png" onclick="clearSearchbar()">
             </div>
-            <p class="search-text">You can search a pokemon by his name!</p>
+            <p id="searchText" class="search-text">You can search a pokemon by his name!</p>
         </div>
         <img class="pokeball" src="./img/icon/favicon.png">
     </div>

@@ -120,16 +120,21 @@
     .left {
         top: 105%;
         left: 75px;
+        border: unset;
     }
 
     .right {
         top: 105%;
         right: 75px;
         padding-bottom: 20px;
+        border: unset;
     }
 }
 
 @media (max-width: 300px) {
+    .main {
+        margin-top: 150px;
+    }
     .header {
         height: 190px;
         display: flex;
@@ -141,11 +146,11 @@
     }
 
     .pokemon-info-card {
-        width: 250px;
+        width: 80%;
     }
 
     #pokecard {
-        width: 250px;
+        width: 80%;
     }
 
     .info-container {
@@ -158,8 +163,11 @@
     }
 
     .pokepic {
-        height: 120px;
-        /* margin-top:0px; */
+        z-index: 2;
+        margin-left: 60px;
+        margin-top: 90px;
+        min-height: 120px;
+        height: 40px !important;
     }
 
     .searchbar {
@@ -168,7 +176,7 @@
 
     /*DETAIL_CARD*/
     .poke-header {
-        padding: 8px;
+        width: 130%;
     }
 
     .pokemon-name {
@@ -188,7 +196,6 @@
         width: 60px;
         height: 30px;
     }
-
 
     .type {
         border-radius: 50%;

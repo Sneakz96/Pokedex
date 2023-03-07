@@ -54,48 +54,48 @@ function renderDetailCard(foundPokemon, i) {
                 <div class="stats-class">
                     <div id="hp" class="name">${foundPokemon['stats'][0]['stat']['name']}</div>
                     <div class="progress">
-                        <div id="hpBar" class="progress-bar bg-success" role="progressbar" style="width: ${foundPokemon['stats'][0]['base_stat']}%"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${foundPokemon['stats'][0]['base_stat']}
+                        <div id="hpBar" class="progress-bar bg-success" role="progressbar" style="width: ${foundPokemon['stats'][0]['base_stat'] / 3 * 2}%">
+                            ${foundPokemon['stats'][0]['base_stat']}
                         </div>
                     </div>
                 </div>
                 <div class="stats-class">
                     <div id="attack" class="name">${foundPokemon['stats'][1]['stat']['name']}</div>
                     <div class="progress">
-                     <div id="attackBar" class="progress-bar bg-warning" role="progressbar" style="width: ${foundPokemon['stats'][1]['base_stat']}%"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${foundPokemon['stats'][1]['base_stat']}
+                     <div id="attackBar" class="progress-bar bg-warning" role="progressbar" style="width: ${foundPokemon['stats'][1]['base_stat'] / 3 * 2}%">
+                            ${foundPokemon['stats'][1]['base_stat']}
                         </div>
                     </div>
                 </div>
                 <div class="stats-class">
                     <div id="defense" class="name">${foundPokemon['stats'][2]['stat']['name']}</div>
                     <div class="progress">
-                        <div id="defenseBar" class="progress-bar bg-danger" role="progressbar" style="width: ${foundPokemon['stats'][2]['base_stat']}%"
-                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">${foundPokemon['stats'][2]['base_stat']}
+                        <div id="defenseBar" class="progress-bar bg-danger" role="progressbar" style="width: ${foundPokemon['stats'][2]['base_stat'] / 3 * 2}%">
+                            ${foundPokemon['stats'][2]['base_stat']}
                         </div>
                     </div>
                 </div>
                 <div class="stats-class">
                     <div id="special-attack" class="name">${foundPokemon['stats'][3]['stat']['name']}</div>
                     <div class="progress">
-                        <div id="saBar" class="progress-bar bg-warning" role="progressbar" style="width: ${foundPokemon['stats'][3]['base_stat']}%"
-                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${foundPokemon['stats'][3]['base_stat']}
+                        <div id="saBar" class="progress-bar bg-warning" role="progressbar" style="width: ${foundPokemon['stats'][3]['base_stat'] / 3 * 2}%">
+                            ${foundPokemon['stats'][3]['base_stat']}
                         </div>
                     </div>
                 </div>
                     <div class="stats-class">
                     <div id="special-defense" class="name">${foundPokemon['stats'][4]['stat']['name']}</div>
                     <div class="progress">
-                        <div id="sdBar" class="progress-bar bg-danger" role="progressbar" style="width: ${foundPokemon['stats'][4]['base_stat']}%"
-                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">${foundPokemon['stats'][4]['base_stat']}
+                        <div id="sdBar" class="progress-bar bg-danger" role="progressbar" style="width: ${foundPokemon['stats'][4]['base_stat'] / 3 * 2}%">
+                            ${foundPokemon['stats'][4]['base_stat']}
                         </div>
                 </div>
                 </div>
                 <div class="stats-class">
                     <div id="speed" class="name">${foundPokemon['stats'][5]['stat']['name']}</div>
                     <div class="progress">
-                        <div id="speedBar" class="progress-bar bg-info" role="progressbar" style="width: ${foundPokemon['stats'][5]['base_stat']}%"
-                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">${foundPokemon['stats'][5]['base_stat']}
+                        <div id="speedBar" class="progress-bar bg-info" role="progressbar" style="width: ${foundPokemon['stats'][5]['base_stat'] / 3 * 2}%">
+                            ${foundPokemon['stats'][5]['base_stat']}
                         </div>
                     </div>
                 </div>

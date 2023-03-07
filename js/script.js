@@ -69,6 +69,7 @@ function openDetailCard(id) {
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
 
+    checkIfBigCardIsOpen();
     renderPokemonAttacks(foundPokemon);
     renderPokemonAbilities(foundPokemon);
     checkSecondType(i);
@@ -76,6 +77,13 @@ function openDetailCard(id) {
     if (type.length > 1) {
         addBgSec(i);
     }
+}
+
+function checkIfBigCardIsOpen() {
+    if (cardIsOpen = true) {
+        document.getElementById('searchBox').classList.add('d-none');
+        document.getElementById('searchText').classList.add('d-none');
+    } 
 }
 
 // CLOSE OVERLAY
@@ -142,6 +150,8 @@ function changeOnAbilities() {
 // CLOSE BIG POKEMON-CARD
 function quitDetailCard() {
     cardIsOpen = false;
+    document.getElementById('searchBox').classList.remove('d-none');
+    document.getElementById('searchText').classList.remove('d-none');
     document.getElementById('renderedPokemonCards').classList.add('d-none');
     document.getElementById('pokedex').classList.remove('d-none');
 }
@@ -179,9 +189,9 @@ function checkEmptySearchbar() {
 
 // CLEAR OUT SEARCHBAR
 function clearSearchbar() {
-    init();
-    document.getElementById('emptyCard').classList.add('d-none');
     document.getElementById('searchBar').value = '';
+    document.getElementById('emptyCard').classList.add('d-none');
+    init();
 }
 
 // ONSCROLL FUNCTION
