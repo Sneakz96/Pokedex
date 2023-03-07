@@ -252,12 +252,21 @@ body {
     top: 100px;
 }
 
+.empty-card {
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 40px;
+    width: 30%;
+    z-index: 2;
+    text-align: center;
+}
+
 .empty-card-p {
-    color: var(--bg-blue);
+    margin-top: 12px;
+    font-size: 12px;
 }
 
 .poke-nav a {
     font-weight: 700;
     margin-top: 15px;
 }
-

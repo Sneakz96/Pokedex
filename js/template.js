@@ -23,6 +23,7 @@ function renderDetailCard(foundPokemon, i) {
     <img class="right" onclick="nextPokemon(${i})" src="./img/icon/right_black.png">
     <img class="close"  onclick="quitDetailCard(${i})" src="./img/icon/close_black.png">
     <img id="pokescircle_${i}" class="pokemon-class-circle">
+    <img id="pokescircle_two_${i}" class="class-circle d-none">
         <div id="pokecard">
            <h2 id="pokemonName_${i}" class="pokemon-name">${foundPokemon['name']}</h2>
             <div class="pokemon-type-btn">

@@ -193,7 +193,7 @@ async function loadMorePokemons() {
     }
 }
 
-// 
+// CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
 function checkSecondType(i) {
     let type = allPokemons[i]['types'];
     let secondType = document.getElementById(`pokescircle_two_${i}`);
@@ -206,7 +206,7 @@ function checkSecondType(i) {
     }
 }
 
-// 
+// GET TYPE OF POKEMONS
 function getPokemonType(i) {
     let type = allPokemons[i]['types'][0]['type']['name'];
     let circle = document.getElementById(`pokescircle_${i}`);

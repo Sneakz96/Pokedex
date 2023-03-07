@@ -82,6 +82,10 @@
     .pokemon-preview:first-child {
         margin-top: 20px !important;
     }
+    .empty-card {
+        margin-top: 40px;
+        width: 40%;
+    }
 }
 
 @media (max-width: 760px) {
@@ -93,6 +97,10 @@
 @media (max-width: 420px) {
     .pokemon-preview:first-child {
         margin-top: 80px;
+    }
+    
+    .empty-card {
+        width: 80%;
     }
 }
 
