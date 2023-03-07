@@ -64,7 +64,7 @@ function openDetailCard(id) {
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
     let pokemonCards = document.getElementById('renderedPokemonCards');
     let type = allPokemons[i]['types'];
-    
+
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
@@ -238,8 +238,27 @@ function getPokemonType(i) {
 
 // LOAD PREVIOUS DATAIL_CARD
 function previousPokemon(i) {
-    i--;
-    openDetailCard(allPokemons[i]['id'])
+    if (i == 0) {
+        left.classList.add('d-none');
+        checkLast(i);
+    } else {
+        i--;
+        openDetailCard(allPokemons[i]['id'])
+        left.classList.remove('d-none');
+        checkLast(i);
+    }
+}
+
+// 
+function checkLast(i) {
+    let left = document.getElementById('left');
+    if (i <= 1) {
+        left.classList.add('d-none');
+    } else {
+        i--;
+        openDetailCard(allPokemons[i]['id'])
+        left.classList.remove('d-none');
+    }
 }
 
 // LOAD NEXT DATAIL_CARD
