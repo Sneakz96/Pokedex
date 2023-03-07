@@ -8,7 +8,7 @@ function renderPokemons(allPokemons, i) {
     </div>
     <img class="pokeball-bg" src="img/pokeball_bg.png">
     <img id="pokePicture_${i}" class="small-pokemons" src="${allPokemons[i]['sprites']['other']['official-artwork']['front_default']}">
-    <div class="poke-card-footer">
+    <div class="poke-card-footer"> 
         <img id="pokescircle_${i}" class="class-circle">
         <img id="pokescircle_two_${i}" class="class-circle d-none">
     </div>
@@ -22,8 +22,14 @@ function renderDetailCard(foundPokemon, i) {
     <img class="left" onclick="previosPokemon(${i})" src="./img/icon/left_black.png">
     <img class="right" onclick="nextPokemon(${i})" src="./img/icon/right_black.png">
     <img class="close"  onclick="quitDetailCard(${i})" src="./img/icon/close_black.png">
-    <img id="pokescircle_${i}" class="type">
-    <img id="pokescircle_two_${i}" class="type d-none">
+    <div class="types">
+        <div class="class color_bg_${allPokemons[i]['types'][0]['type']['name']}">
+            <img id="pokescircle_${i}" class="type">
+        </div>
+        <div class="class_two color_bg_${allPokemons[i]['types'][1]['type']['name']}">
+            <img id="pokescircle_two_${i}" class="type d-none">
+        </div>
+    </div>
         <div id="pokecard">
            <h2 id="pokemonName_${i}" class="pokemon-name">${foundPokemon['name']}</h2>
             <div class="pokemon-type-btn">

@@ -48,6 +48,31 @@
     box-shadow: 10px 10px 14px 0;
 }
 
+.types {
+    position: absolute;
+    top: 100px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.class {
+    display: flex;
+    justify-content: flex-end;
+    width: 70px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.class_two {
+    width: 50px;
+    display: flex;
+    justify-content: flex-end;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 .type {
     border-radius: 50%;
     padding: 3px;
