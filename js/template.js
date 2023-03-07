@@ -18,10 +18,9 @@ function renderPokemons(allPokemons, i) {
 // GENERATE BIG CARDS WHEN OPEN
 function renderDetailCard(foundPokemon, i) {
     return /*html*/`
-    <div id="pokemonCard_${i}" class="pokemon-info-card  ">
+    <div id="pokemonCard_${i}" class="pokemon-info-card">
     <img class="left" onclick="previosPokemon(${i})" src="./img/icon/left_black.png">
     <img class="right" onclick="nextPokemon(${i})" src="./img/icon/right_black.png">
-    <img class="close"  onclick="quitDetailCard(${i})" src="./img/icon/close_black.png">
     <div class="types">
         <div class="class color_bg_${allPokemons[i]['types'][0]['type']['name']}">
             <img id="pokescircle_${i}" class="type">
@@ -30,13 +29,14 @@ function renderDetailCard(foundPokemon, i) {
             <img id="pokescircle_two_${i}" class="type d-none">
         </div>
     </div>
-        <div id="pokecard">
-            <div class="poke-header">
+    <div id="pokecard">
+        <div class="poke-header">
+                <img class="close" onclick="quitDetailCard(${i})" src="./img/icon/x_white.png">
                 <h2 id="pokemonName_${i}" class="pokemon-name">${foundPokemon['name']}</h2>
             </div>
-            <div class="pokemon-type-btn">
+            <!-- <div class="pokemon-type-btn">
                 <span id="pokemonTypes_${i}">${foundPokemon['types'][0]['type']['name']}</span>
-            </div>
+            </div> -->
             <img class="pokeball-card-bg" src="img/pokeball_bg.png">
             <img id="pokemonImage_${i}" class="pokepic" src="${foundPokemon['sprites']['other']['official-artwork']['front_default']}">
         </div>
