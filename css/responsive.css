@@ -90,6 +90,9 @@
 }
 
 @media (max-width: 760px) {
+    .logo {
+        margin-top: 0px;
+    }
     .search-text {
         font-size: 8px;
     }

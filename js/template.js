@@ -24,10 +24,10 @@ function renderDetailCard(foundPokemon, i) {
     <div class="types">
 
         <div class="class color_bg_${allPokemons[i]['types'][0]['type']['name']}">
-            <img id="pokescircle_${i}" class="type">
+            <img id="pokescircle_opened_one_${i}" class="type">
         </div>
         <div id="secondTypeContainer_${i}" class="class_two">
-            <img id="pokescircle_two_${i}" class="type d-none">
+            <img id="pokescircle_opened_two_${i}" class="type d-none">
         </div>
 
     </div>

@@ -37,79 +37,80 @@ a {
 /*COLOR_CLASSES*/
 
 .color_bg_grass {
-    background: linear-gradient(to bottom, #1ec229, #148d1c);
+    background: linear-gradient(to bottom, #1ec229, #148d1c) !important;
 }
 
 .color_bg_water {
-    background: linear-gradient(to bottom, #82a5e2, #1b50ac);
+    background: linear-gradient(to bottom, #82a5e2, #1b50ac) !important;
+    /* background-color: #1b50ac !important; */
 }
 
 .color_bg_fire {
-    background: linear-gradient(to bottom, #ec4646, #c30202);
+    background: linear-gradient(to bottom, #ec4646, #c30202) ;
 }
 
 .color_bg_electric {
-    background: linear-gradient(to bottom, #efa475, #ff6200);
+    background: linear-gradient(to bottom, #efa475, #ff6200) !important;
 }
 
 .color_bg_psychic {
-    background: linear-gradient(to bottom, #c3c34c, #ddf446);
+    background: linear-gradient(to bottom, #c3c34c, #ddf446) !important;
 }
 
 .color_bg_bug {
-    background: linear-gradient(to bottom, #40af47, #0c5011);
+    background: linear-gradient(to bottom, #40af47, #0c5011) !important;
 }
 
 .color_bg_earth {
-    background: linear-gradient(to bottom, #945733, #4d2c19);
+    background: linear-gradient(to bottom, #945733, #4d2c19) !important;
 }
 
 .color_bg_poison {
-    background: linear-gradient(to bottom, #cf4cff, #7b0fa3);
+    background: linear-gradient(to bottom, #cf4cff, #7b0fa3) !important;
 }
 
 .color_bg_dark {
-    background: linear-gradient(to bottom, #808080, #808080);
+    background: linear-gradient(to bottom, #808080, #808080) !important;
 }
 
 .color_bg_dragon {
-    background: linear-gradient(to bottom, #24f3a0, #139561);
+    background: linear-gradient(to bottom, #24f3a0, #139561) !important;
 }
 
 .color_bg_rock {
-    background: linear-gradient(to bottom, #d7d7d7, #808080);
+    background: linear-gradient(to bottom, #d7d7d7, #808080) !important;
 }
 
 .color_bg_normal {
-    background: linear-gradient(to bottom, #b58686, #684343);
+    background: linear-gradient(to bottom, #b58686, #684343) !important;
 }
 
 .color_bg_ice {
-    background: linear-gradient(to bottom, #80e5f2, #3ad2e6);
+    background: linear-gradient(to bottom, #80e5f2, #3ad2e6) !important;
 }
 
 .color_bg_flying {
-    background: linear-gradient(to bottom, #80e5f2, #3ad2e6);
+    background: linear-gradient(to bottom, #80e5f2, #3ad2e6) !important;
 }
 
 .color_bg_ground {
-    background: linear-gradient(to bottom, #b58686, #684343);
+    background: linear-gradient(to bottom, #b58686, #684343) !important;
 }
 
 .color_bg_fairy {
-    background: linear-gradient(to bottom, #808080, #707070);
+    background: linear-gradient(to bottom, #808080, #707070) !important;
 }
 
 .color_bg_fighting {
-    background: linear-gradient(to bottom, #808080, #707070);
+    background: linear-gradient(to bottom, #808080, #707070) !important;
 }
 
 .color_bg_ghost {
-    background: linear-gradient(to bottom, #b4b9bc, #a9bdc9);
+    background: linear-gradient(to bottom, #b4b9bc, #a9bdc9) !important;
 }
 
 .color_bg_steel {
-    background: linear-gradient(to bottom, #d7d7d7, #857c7c);
+    background: linear-gradient(to bottom, #d7d7d7, #857c7c) !important;
 }
 
 /*COLOR_ROOT*/

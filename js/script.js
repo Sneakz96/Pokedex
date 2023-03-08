@@ -12,24 +12,24 @@ let searched = false;
 let single = false;
 
 let typeIcons = {
-    grass: { class: 'color_bg_grass', src: 'img/icons/grass.svg' },
-    fire: { class: 'color_bg_fire', src: 'img/icons/fire.svg' },
-    water: { class: 'color_bg_water', src: 'img/icons/water.svg' },
-    bug: { class: 'color_bg_bug', src: 'img/icons/bug.svg' },
-    dark: { class: 'color_bg_dark', src: 'img/icons/dark.svg' },
-    dragon: { class: 'color_bg_dragon', src: 'img/icons/dragon.svg' },
-    electric: { class: 'color_bg_electric', src: 'img/icons/electric.svg' },
-    fairy: { class: 'color_bg_fairy', src: 'img/icons/fairy.svg' },
-    fighting: { class: 'color_bg_fighting', src: 'img/icons/fighting.svg' },
-    flying: { class: 'color_bg_flying', src: 'img/icons/flying.svg' },
-    ghost: { class: 'color_bg_ghost', src: 'img/icons/ghost.svg' },
-    ground: { class: 'color_bg_ground', src: 'img/icons/ground.svg' },
-    ice: { class: 'color_bg_ice', src: 'img/icons/ice.svg' },
-    poison: { class: 'color_bg_poison', src: 'img/icons/poison.svg' },
-    normal: { class: 'color_bg_normal', src: 'img/icons/normal.svg' },
-    steel: { class: 'color_bg_steel', src: 'img/icons/steel.svg' },
-    rock: { class: 'color_bg_rock', src: 'img/icons/rock.svg' },
-    psychic: { class: 'color_bg_psychic', src: 'img/icons/psychic.svg' }
+    grass: { class: 'color_bg_grass', src: './img/icons/grass.svg' },
+    fire: { class: 'color_bg_fire', src: './img/icons/fire.svg' },
+    water: { class: 'color_bg_water', src: './img/icons/water.svg' },
+    bug: { class: 'color_bg_bug', src: './img/icons/bug.svg' },
+    dark: { class: 'color_bg_dark', src: './img/icons/dark.svg' },
+    dragon: { class: 'color_bg_dragon', src: './img/icons/dragon.svg' },
+    electric: { class: 'color_bg_electric', src: './img/icons/electric.svg' },
+    fairy: { class: 'color_bg_fairy', src: './img/icons/fairy.svg' },
+    fighting: { class: 'color_bg_fighting', src: './img/icons/fighting.svg' },
+    flying: { class: 'color_bg_flying', src: './img/icons/flying.svg' },
+    ghost: { class: 'color_bg_ghost', src: './img/icons/ghost.svg' },
+    ground: { class: 'color_bg_ground', src: './img/icons/ground.svg' },
+    ice: { class: 'color_bg_ice', src: './img/icons/ice.svg' },
+    poison: { class: 'color_bg_poison', src: './img/icons/poison.svg' },
+    normal: { class: 'color_bg_normal', src: './img/icons/normal.svg' },
+    steel: { class: 'color_bg_steel', src: './img/icons/steel.svg' },
+    rock: { class: 'color_bg_rock', src: './img/icons/rock.svg' },
+    psychic: { class: 'color_bg_psychic', src: './img/icons/psychic.svg' }
 };
 
 // INIT FUNCTION AT ONLOAD
@@ -80,7 +80,7 @@ function openDetailCard(id) {
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
     checkFirst(id);
-    
+
     checkArrayLengthForSwipe();
 
     checkIfBigCardIsOpen();
@@ -131,6 +131,25 @@ function renderPokemonAbilities(foundPokemon) {
         <div class="pokemon-abilities">${move.replace(/^.{1}/g, move[0].toUpperCase())}</div>`;
     }
 }
+
+// CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
+function checkSecondType(i) {
+    let type = allPokemons[i]['types'];
+    let secondType = document.getElementById(`pokescircle_two_${i}`);
+    if (type.length > 1) {
+
+        let secType = type[1]['type']['name'];
+        // console.log('secType:',secType);
+        let typeIcon = typeIcons[secType];
+        secondType.classList.remove('d-none');
+        secondType.classList.add(typeIcon.class);
+        secondType.src = typeIcon.src;
+    } else {
+        secondType.classList.add('d-none');
+    }
+}
+
+
 
 
 
@@ -197,26 +216,22 @@ function getSearchedPokemon() {
 
 // SEARCHBAR
 function searchPokemon() {
-    // debugger; 
-    console.log(currentPokemons);
 
     currentPokemons = [];
-    console.log(currentPokemons);
     let search = document.getElementById('searchBar').value;
-
-    input = search.toLowerCase();
+    let input = search.toLowerCase();
     for (let i = 0; i < allPokemons.length; i++) {
         if (allPokemons[i]['name'].includes(input)) {
             currentPokemons.push(allPokemons[i]);
         }
     }
     checkEmptySearchbar(input);
-    getTypes(currentPokemons);
-    // console.log('all found Pokemons:', currentPokemons);
+    getTypes();
 }
 
 
-function getTypes(currentPokemons) {
+function getTypes() {
+    // debugger; 
     for (let i = 0; i < currentPokemons.length; i++) {
         getSearchedPokemonType(i);
         // console.log('first type',allPokemons[i]['types'][0]['type']['name']);
@@ -225,8 +240,9 @@ function getTypes(currentPokemons) {
 
 // GET TYPE OF SEARCHED POKEMONS
 function getSearchedPokemonType(i) {
-    // console.log('check:', currentPokemons[i]['name'], currentPokemons[i]['id']);
-    // console.log('current Pokemon:',currentPokemons[i]['name']);
+    searched = true;
+    console.log('check:', currentPokemons[i]['name'], currentPokemons[i]['id']);
+    console.log('current Pokemon:', currentPokemons[i]['name']);
     let type = currentPokemons[i]['types'][0]['type']['name'];
 
     let circle = document.getElementById(`pokescircle_${i}`);
@@ -234,48 +250,60 @@ function getSearchedPokemonType(i) {
 
     circle.classList.add(typeIcon.class);
     circle.src = typeIcon.src;
-    // console.log('check first cirlce of:', currentPokemons[i]['name']);
-    // console.log('firstType:', type);
+    console.log('check first cirlce of:', currentPokemons[i]['name']);
+    console.log('firstType:', type);
 
-    // console.log('check second cirlce of:', currentPokemons[i]['name']);
-    checkSecond_TEST(i);
+    console.log('check second cirlce of:', currentPokemons[i]['name']);
+    checkSecondTypeOnDetailCard(i);
+    checkDetailColors(i);
 }
 
 // CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
-function checkSecondType(i) {
-    let type = allPokemons[i]['types'];
-    let secondType = document.getElementById(`pokescircle_two_${i}`);
-    if (type.length > 1) {
-
-        let secType = type[1]['type']['name'];
-        // console.log('secType:',secType);
-        let typeIcon = typeIcons[secType];
-        secondType.classList.remove('d-none');
-        secondType.classList.add(typeIcon.class);
-        secondType.src = typeIcon.src;
-    } else {
-        secondType.classList.add('d-none');
-    }
-}
-
-// CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
-function checkSecond_TEST(i) {
+function checkSecondTypeOnDetailCard(i) {
     let type = currentPokemons[i]['types'];
     let secondType = document.getElementById(`pokescircle_two_${i}`);
-    if (type.length > 1) {
-        // console.log(currentPokemons[i]['name'], 'have two types');
+    if (type.length == 2) {
+        // debugger;
+        console.log(currentPokemons[i]['name'], 'have two types');
         let secType = type[1]['type']['name'];
         // console.log('secType:',secType);
         let typeIcon = typeIcons[secType];
+        console.log('typeIcon:', typeIcon);
         secondType.classList.remove('d-none');
+        console.log(secondType.classList);
         secondType.classList.add(typeIcon.class);
+        console.log(typeIcon.class);
+        console.log(secondType.classList);
         secondType.src = typeIcon.src;
     } else {
         secondType.classList.add('d-none');
     }
 }
 
+function checkDetailColors(i) {
+    let types = currentPokemons[i]['types'];
+    console.log(types.length);
+    let type = currentPokemons[i]['types'][0]['type']['name'];
+    console.log(type);
+    let typeIcon = typeIcons[type];
+    console.log(typeIcon);
+    if (types.length == 2) {
+        console.log('hello world');
+        let type_two = currentPokemons[i]['types'][1]['type']['name'];
+        console.log('typ 2:', type_two);
+        let circle_two = document.getElementById(`pokescircle_two_${i}`);
+        console.log('circle_two:', circle_two);
+        let typeIcon_two = typeIcons[type_two];
+        console.log(typeIcon_two)
+    }
+    let circle = document.getElementById(`pokescircle_${i}`);
+    // console.log(circle);
 
+
+
+
+
+}
 
 
 
@@ -297,8 +325,9 @@ function checkArrayLengthForSwipe() {
     checkSingle();
 }
 
+// 
 function checkSingle() {
-    console.log('check single:', single);
+    // console.log('check single:', single);
     if (single) {
         console.log('check single check:', single);
 
@@ -326,7 +355,7 @@ function checkEmptySearchbar() {
 function clearSearchbar() {
     currentPokemons = [];
     checkEmptySearchbar();
-    console.log(currentPokemons);
+    // console.log(currentPokemons);
     document.getElementById('searchBar').value = '';
     document.getElementById('emptyCard').classList.add('d-none');
     let pokedex = document.getElementById('pokedex');
@@ -393,7 +422,20 @@ function checkFirst(i) {
 
 // LOAD NEXT DATAIL_CARD
 function nextPokemon(i) {
-    i++;
-    openDetailCard(allPokemons[i]['id']);
+    if (searched = true) {
+        console.log('check');
+        i++;
+        console.log(currentPokemons[i]['id']);
+        openDetailCard(currentPokemons[i]['id']);
+        checkMax();
+    } else {
+        i++;
+        openDetailCard(allPokemons[i]['id']);
+    }
 }
+
+function checkMax(){
+    console.log(currentPokemons.length);
+}
+
 
