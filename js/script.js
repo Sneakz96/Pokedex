@@ -68,29 +68,24 @@ function openDetailCard(id) {
     // console.log(id);
 
     cardIsOpen = true;
+
     let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
-    // console.log(i);
-    // console.log(foundPokemon.name);
-    let pokemonCards = document.getElementById('renderedPokemonCard');
     let type = allPokemons[i]['types'];
+    let pokemonCards = document.getElementById('renderedPokemonCard');
     // console.log(allPokemons[i]['types'][0]['type'].name);
 
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
+
     checkFirst(id);
-
     checkArrayLengthForSwipe();
-
     checkIfBigCardIsOpen();
     renderPokemonAttacks(foundPokemon);
     renderPokemonAbilities(foundPokemon);
     checkSecondType(i);
     getPokemonType(i);
-    if (type.length > 1) {
-        addBgSec(i);
-    }
 }
 
 // 
@@ -135,8 +130,8 @@ function renderPokemonAbilities(foundPokemon) {
 // CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
 function checkSecondType(i) {
     let type = allPokemons[i]['types'];
-    let secondType = document.getElementById(`pokescircle_two_${i}`);
     if (type.length > 1) {
+        let secondType = document.getElementById(`pokescircle_two_${i}`);
 
         let secType = type[1]['type']['name'];
         // console.log('secType:',secType);
@@ -144,8 +139,6 @@ function checkSecondType(i) {
         secondType.classList.remove('d-none');
         secondType.classList.add(typeIcon.class);
         secondType.src = typeIcon.src;
-    } else {
-        secondType.classList.add('d-none');
     }
 }
 
@@ -231,7 +224,7 @@ function searchPokemon() {
 
 
 function getTypes() {
-    // debugger; 
+    debugger; 
     for (let i = 0; i < currentPokemons.length; i++) {
         getSearchedPokemonType(i);
         // console.log('first type',allPokemons[i]['types'][0]['type']['name']);
@@ -241,8 +234,6 @@ function getTypes() {
 // GET TYPE OF SEARCHED POKEMONS
 function getSearchedPokemonType(i) {
     searched = true;
-    console.log('check:', currentPokemons[i]['name'], currentPokemons[i]['id']);
-    console.log('current Pokemon:', currentPokemons[i]['name']);
     let type = currentPokemons[i]['types'][0]['type']['name'];
 
     let circle = document.getElementById(`pokescircle_${i}`);
@@ -263,17 +254,10 @@ function checkSecondTypeOnDetailCard(i) {
     let type = currentPokemons[i]['types'];
     let secondType = document.getElementById(`pokescircle_two_${i}`);
     if (type.length == 2) {
-        // debugger;
-        console.log(currentPokemons[i]['name'], 'have two types');
         let secType = type[1]['type']['name'];
-        // console.log('secType:',secType);
         let typeIcon = typeIcons[secType];
-        console.log('typeIcon:', typeIcon);
         secondType.classList.remove('d-none');
-        console.log(secondType.classList);
         secondType.classList.add(typeIcon.class);
-        console.log(typeIcon.class);
-        console.log(secondType.classList);
         secondType.src = typeIcon.src;
     } else {
         secondType.classList.add('d-none');
@@ -282,22 +266,13 @@ function checkSecondTypeOnDetailCard(i) {
 
 function checkDetailColors(i) {
     let types = currentPokemons[i]['types'];
-    console.log(types.length);
     let type = currentPokemons[i]['types'][0]['type']['name'];
-    console.log(type);
-    let typeIcon = typeIcons[type];
-    console.log(typeIcon);
+
     if (types.length == 2) {
-        console.log('hello world');
         let type_two = currentPokemons[i]['types'][1]['type']['name'];
-        console.log('typ 2:', type_two);
         let circle_two = document.getElementById(`pokescircle_two_${i}`);
-        console.log('circle_two:', circle_two);
         let typeIcon_two = typeIcons[type_two];
-        console.log(typeIcon_two)
     }
-    let circle = document.getElementById(`pokescircle_${i}`);
-    // console.log(circle);
 
 
 
@@ -314,7 +289,7 @@ function checkDetailColors(i) {
 
 // 
 function checkArrayLengthForSwipe() {
-    console.log('checkArrayLengthForSwipe');
+    // console.log('checkArrayLengthForSwipe');
 
     if (currentPokemons.length == 1) {
         console.log(currentPokemons);
@@ -382,20 +357,20 @@ async function loadMorePokemons() {
         allPokemons.push(currentPokemon);
         currentPokemons.push(currentPokemon);
         pokedex.innerHTML += renderPokemons(currentPokemons, i);
-        getPokemonType(i);
+        await getPokemonType(i);
     }
 }
 
 // 
-function addBgSec(i) {
-    let type = allPokemons[i]['types'][1]['type']['name'];
-    let typeIcon = typeIcons[type];
-    let secondTypeContainer = document.getElementById(`secondTypeContainer_${i}`);
-    secondTypeContainer.classList.add(typeIcon.class);
-}
+// function addBgSec(i) {
+//     let type = allPokemons[i]['types'][1]['type']['name'];
+//     let typeIcon = typeIcons[type];
+//     let secondTypeContainer = document.getElementById(`secondTypeContainer_${i}`);
+//     secondTypeContainer.classList.add(typeIcon.class);
+// }
 
 // GET TYPE OF POKEMONS
-function getPokemonType(i) {
+async function getPokemonType(i) {
     let type = allPokemons[i]['types'][0]['type']['name'];
     let circle = document.getElementById(`pokescircle_${i}`);
     let typeIcon = typeIcons[type];
@@ -424,18 +399,27 @@ function checkFirst(i) {
 function nextPokemon(i) {
     if (searched = true) {
         console.log('check');
-        i++;
+        i++
         console.log(currentPokemons[i]['id']);
         openDetailCard(currentPokemons[i]['id']);
-        checkMax();
+        // checkMax(i);
     } else {
         i++;
         openDetailCard(allPokemons[i]['id']);
     }
 }
 
-function checkMax(){
-    console.log(currentPokemons.length);
-}
+// function checkMax(i){
+//     let right = document.getElementById(`right`);
+//     console.log(i);
+//     console.log(currentPokemons.length);
+//     if (i >= currentPokemons.length) {
+//         console.log(currentPokemons);
+//         console.log('right',right);
+//         right.classList.add('d-none');
+//     } else {
+//         right.classList.remove('d-none');
+//     }
+// }
 
 
