@@ -9,6 +9,7 @@ let cardIsOpen = false;
 
 let searched = false;
 
+let single = false;
 
 let typeIcons = {
     grass: { class: 'color_bg_grass', src: 'img/icons/grass.svg' },
@@ -65,6 +66,7 @@ function renderPokedex() {
 // OPEN BIG POKEMON-CARD
 function openDetailCard(id) {
     // console.log(id);
+
     cardIsOpen = true;
     let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
@@ -77,8 +79,10 @@ function openDetailCard(id) {
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
-    // checkIdForSwipe(id);
     checkFirst(id);
+    
+    checkArrayLengthForSwipe();
+
     checkIfBigCardIsOpen();
     renderPokemonAttacks(foundPokemon);
     renderPokemonAbilities(foundPokemon);
@@ -195,7 +199,9 @@ function getSearchedPokemon() {
 function searchPokemon() {
     // debugger; 
     console.log(currentPokemons);
+
     currentPokemons = [];
+    console.log(currentPokemons);
     let search = document.getElementById('searchBar').value;
 
     input = search.toLowerCase();
@@ -203,7 +209,6 @@ function searchPokemon() {
         if (allPokemons[i]['name'].includes(input)) {
             currentPokemons.push(allPokemons[i]);
         }
-
     }
     checkEmptySearchbar(input);
     getTypes(currentPokemons);
@@ -279,13 +284,38 @@ function checkSecond_TEST(i) {
 
 
 
+// 
+function checkArrayLengthForSwipe() {
+    console.log('checkArrayLengthForSwipe');
 
+    if (currentPokemons.length == 1) {
+        console.log(currentPokemons);
+        single = true;
+    } else {
+        single = false;
+    }
+    checkSingle();
+}
 
+function checkSingle() {
+    console.log('check single:', single);
+    if (single) {
+        console.log('check single check:', single);
+
+        // LEFT
+        let left = document.getElementById(`left`);
+        left.classList.add('d-none');
+        //RIGHT
+        let right = document.getElementById(`right`);
+        right.classList.add('d-none');
+    }
+}
 
 // 
 function checkEmptySearchbar() {
     if (currentPokemons.length === 0) {
         document.getElementById('emptyCard').classList.remove('d-none');
+        searched = false;
     } else {
         document.getElementById('emptyCard').classList.add('d-none');
     }
@@ -366,3 +396,4 @@ function nextPokemon(i) {
     i++;
     openDetailCard(allPokemons[i]['id']);
 }
+

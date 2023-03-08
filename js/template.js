@@ -20,7 +20,7 @@ function renderDetailCard(foundPokemon, i) {
     return /*html*/`
     <div id="pokemonCard_${i}" class="pokemon-info-card">
     <img id="left" class="left" onclick="previousPokemon(${i})" src="./img/icon/left_black.png">
-    <img class="right" onclick="nextPokemon(${i})" src="./img/icon/right_black.png">
+    <img id="right" class="right" onclick="nextPokemon(${i})" src="./img/icon/right_black.png">
     <div class="types">
 
         <div class="class color_bg_${allPokemons[i]['types'][0]['type']['name']}">
