@@ -9,8 +9,8 @@ function renderPokemons(allPokemons, i) {
     <img class="pokeball-bg" src="img/pokeball_bg.png">
     <img id="pokePicture_${i}" class="small-pokemons" src="${allPokemons[i]['sprites']['other']['official-artwork']['front_default']}">
     <div class="poke-card-footer"> 
-        <img id="pokescircle_${i}" class="class-circle">
-        <img id="pokescircle_two_${i}" class="class-circle d-none">
+        <img id="pokescircle_${i}" class="class-circle" src="">
+        <img id="pokescircle_two_${i}" class="class-circle d-none" src="">
     </div>
     </div>`
 }
