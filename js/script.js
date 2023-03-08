@@ -59,18 +59,15 @@ function renderPokedex() {
 
 // OPEN BIG POKEMON-CARD
 function openDetailCard(id) {
-    console.log(id);
-
-
-
+    // console.log(id);
     cardIsOpen = true;
     let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
     // console.log(i);
-    console.log(foundPokemon.name);
-    let pokemonCards = document.getElementById('renderedPokemonCards');
+    // console.log(foundPokemon.name);
+    let pokemonCards = document.getElementById('renderedPokemonCard');
     let type = allPokemons[i]['types'];
-    console.log(allPokemons[i]['types'][0]['type'].name);
+    // console.log(allPokemons[i]['types'][0]['type'].name);
 
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
@@ -126,10 +123,6 @@ function renderPokemonAbilities(foundPokemon) {
     }
 }
 
-
-
-
-
 // FIRST FUNCTION FOR THE POKECARDMENU
 function changeOnStats() {
     document.getElementById('statsHeader').style.textDecoration = "underline";
@@ -160,44 +153,14 @@ function changeOnAbilities() {
     document.getElementById('pokemonAttacks').classList.add('d-none');
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // CLOSE BIG POKEMON-CARD
 function quitDetailCard() {
     cardIsOpen = false;
     document.getElementById('searchBox').classList.remove('d-none');
     document.getElementById('searchText').classList.remove('d-none');
-    document.getElementById('renderedPokemonCards').classList.add('d-none');
+    document.getElementById('renderedPokemonCard').classList.add('d-none');
     document.getElementById('pokedex').classList.remove('d-none');
+    document.getElementById('searchBar').value = '';
 }
 
 // PREFUNCTION FOR SEARCH
@@ -207,19 +170,60 @@ async function getSearchedPokemon() {
     searchPokemon(foundPokemonNames);
 }
 
-// FUNCTION FOR SEARCHBAR
-async function searchPokemon() {
-    currentPokemons = [];
+//  SEARCHBAR
+function searchPokemon() {
     let search = document.getElementById('searchBar').value;
-
     input = search.toLowerCase();
+    let currentPokemons = [];
+
     for (let i = 0; i < allPokemons.length; i++) {
         if (allPokemons[i]['name'].includes(input)) {
             currentPokemons.push(allPokemons[i]);
         }
     }
-    checkEmptySearchbar();
+    checkEmptySearchbar(input);
+    getTypes();
+    console.log(currentPokemons);
 }
+
+// 
+function getTypes() {
+    for (let i = 0; i < currentPokemons.length; i++) {
+        getSearchedPokemonType(i);
+    }
+}
+
+// GET TYPE OF SEARCHED POKEMONS
+function getSearchedPokemonType(i) {
+    let types = currentPokemons[i]['types'];
+    let type = currentPokemons[i]['types'][0]['type']['name'];
+    let circle = document.getElementById(`pokescircle_${i}`);
+    let typeIcon = typeIcons[type];
+    circle.classList.add(typeIcon.class);
+    circle.src = typeIcon.src;
+
+    if (types.length > 1) {
+        let secondCircle = document.getElementById(`pokescircle_two_${i}`);
+        secondCircle.classList.remove('d-none');
+        secondCircle.classList.add(typeIcon.class);
+        secondCircle.src = typeIcon.src;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 
 function checkEmptySearchbar() {
@@ -233,6 +237,9 @@ function checkEmptySearchbar() {
 
 // CLEAR OUT SEARCHBAR
 function clearSearchbar() {
+    currentPokemons = [];
+    checkEmptySearchbar();
+    console.log(currentPokemons);
     document.getElementById('searchBar').value = '';
     document.getElementById('emptyCard').classList.add('d-none');
     let pokedex = document.getElementById('pokedex');
@@ -276,6 +283,7 @@ function checkSecondType(i) {
     }
 }
 
+// 
 function addBgSec(i) {
     let type = allPokemons[i]['types'][1]['type']['name'];
     let typeIcon = typeIcons[type];
@@ -299,7 +307,7 @@ function previousPokemon(i) {
     openDetailCard(allPokemons[i]['id']);
 }
 
-// 
+// CHECK IF CARD IS FIRST OF ALL
 function checkFirst(i) {
     if (i <= 1) {
         let left = document.getElementById(`left`);

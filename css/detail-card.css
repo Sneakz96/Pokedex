@@ -11,6 +11,7 @@
     top: 50%;
     left: -75px;
     border: 2px solid var(--dark);
+    padding: 2px;
 }
 
 .left:hover {
@@ -22,6 +23,7 @@
     top: 50%;
     right: -75px;
     border: 2px solid var(--dark);
+    padding: 2px;
 }
 
 .right:hover {
