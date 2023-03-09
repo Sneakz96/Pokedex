@@ -1,16 +1,18 @@
+// CURRENT
 let currentPokemon;
+// ARRAYS
 let allPokemons = [];
 let currentPokemons = [];
+// VARIABLES
 let offset = 0;
 let limit = 151;
-let functionBool = true;
 let stepsize = 20;
+// BOOLEANS
+let functionBool = true;
 let cardIsOpen = false;
-
 let searched = false;
-
 let single = false;
-
+// SET TYPE_ICONS
 let typeIcons = {
     grass: { class: 'color_bg_grass', src: './img/icons/grass.svg' },
     fire: { class: 'color_bg_fire', src: './img/icons/fire.svg' },
@@ -65,30 +67,36 @@ function renderPokedex() {
 
 // OPEN BIG POKEMON-CARD
 function openDetailCard(id) {
-    // console.log(id);
-
     cardIsOpen = true;
 
     let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
     let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
-    let type = allPokemons[i]['types'];
     let pokemonCards = document.getElementById('renderedPokemonCard');
-    // console.log(allPokemons[i]['types'][0]['type'].name);
 
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
     pokemonCards.classList.remove('d-none');
     document.getElementById('pokedex').classList.add('d-none');
 
+    checkCurrentPokemon(id);
+    renderCurrentPokemon(foundPokemon, i)
+}
+
+// CHECK DATA FOR CURRENT POKEMON
+function checkCurrentPokemon(id) {
     checkFirst(id);
     checkArrayLengthForSwipe();
     checkIfBigCardIsOpen();
+}
+
+// RENDER STATS FOR CURRENT POKEMON
+function renderCurrentPokemon(foundPokemon, i) {
     renderPokemonAttacks(foundPokemon);
     renderPokemonAbilities(foundPokemon);
     checkSecondType(i);
     getPokemonType(i);
 }
 
-// 
+// CHECK IF A CARD IS OPEN
 function checkIfBigCardIsOpen() {
     if (cardIsOpen = true) {
         document.getElementById('searchBox').classList.add('d-none');
@@ -105,7 +113,7 @@ function closeOverlay(event) {
     }
 }
 
-// 
+// RENDER ATTACKS OF CURRENT POKEMON 
 function renderPokemonAttacks(foundPokemon) {
     let pokeAttackContainer = document.getElementById('pokemonAttacks');
 
@@ -116,7 +124,7 @@ function renderPokemonAttacks(foundPokemon) {
     }
 }
 
-// 
+// RENDER ABILITIES OF CURRENT POKEMON 
 function renderPokemonAbilities(foundPokemon) {
     let pokeAbilitiesContainer = document.getElementById('pokemonAbilities');
 
@@ -130,65 +138,62 @@ function renderPokemonAbilities(foundPokemon) {
 // CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
 function checkSecondType(i) {
     let type = allPokemons[i]['types'];
-    if (type.length > 1) {
+    if (type.length == 2) {
         let secondType = document.getElementById(`pokescircle_two_${i}`);
-
         let secType = type[1]['type']['name'];
-        // console.log('secType:',secType);
         let typeIcon = typeIcons[secType];
-        secondType.classList.remove('d-none');
-        secondType.classList.add(typeIcon.class);
-        secondType.src = typeIcon.src;
+
+        if (cardIsOpen) {
+            let secondType_opened = document.getElementById(`pokescircle_opened_two_${i}`);
+            let secondType_Container = document.getElementById(`secondTypeContainer_${i}`);
+            secondType_Container.classList.add(typeIcon.class);
+            secondType_opened.classList.remove('d-none');
+            secondType_opened.classList.add(typeIcon.class);
+            secondType_opened.src = typeIcon.src;
+        } else {
+            secondType.classList.remove('d-none');
+            secondType.classList.add(typeIcon.class);
+            secondType.src = typeIcon.src;
+        }
     }
 }
 
-
-
-
-
-
-
-// CLEAN CODE
-
-// FIRST FUNCTION FOR THE POKECARDMENU
+// RENDER STATS
 function changeOnStats() {
-    document.getElementById('statsHeader').style.textDecoration = "underline";
-    document.getElementById('attacksHeader').style.textDecoration = "none";
-    document.getElementById('abilitiesHeader').style.textDecoration = "none";
-    document.getElementById('pokemonAbilities').classList.add('d-none');
-    document.getElementById('stats').classList.remove('d-none');
-    document.getElementById('pokemonAttacks').classList.add('d-none');
+    toggleSectionVisibility('stats');
 }
 
-// SECOND FUNCTION FOR THE POKECARDMENU
+// RENDER ATTACKS
 function changeOnAttacks() {
-    document.getElementById('statsHeader').style.textDecoration = "none";
-    document.getElementById('attacksHeader').style.textDecoration = "underline";
-    document.getElementById('abilitiesHeader').style.textDecoration = "none";
-    document.getElementById('pokemonAbilities').classList.add('d-none');
-    document.getElementById('stats').classList.add('d-none');
-    document.getElementById('pokemonAttacks').classList.remove('d-none');
+    toggleSectionVisibility('attacks');
 }
 
-// THIRD FUNCTION FOR THE POKECARDMENU
+// RENDER ABILITIES
 function changeOnAbilities() {
-    document.getElementById('statsHeader').style.textDecoration = "none";
-    document.getElementById('attacksHeader').style.textDecoration = "none";
-    document.getElementById('abilitiesHeader').style.textDecoration = "underline";
-    document.getElementById('pokemonAbilities').classList.remove('d-none');
-    document.getElementById('stats').classList.add('d-none');
-    document.getElementById('pokemonAttacks').classList.add('d-none');
+    toggleSectionVisibility('abilities');
 }
 
+/**
+ * sectionId OF CURRENT POKEMON 
+ * @param {'stats'} sectionId 
+ * @param {'attacks'} sectionId 
+ * @param {'abilities'} sectionId 
+ */
+function toggleSectionVisibility(sectionId) {
+    let activeSectionId = `${sectionId}Header`;
+    let inactiveSectionIds = ['statsHeader', 'attacksHeader', 'abilitiesHeader'].filter(id => id !== activeSectionId);
+    let visibleSectionId = `pokemon${sectionId.charAt(0).toUpperCase()}${sectionId.slice(1)}`;
+    let hiddenSectionIds = ['stats', 'pokemonAttacks', 'pokemonAbilities'].filter(id => id !== visibleSectionId);
 
-// CLEAN CODE
-
-
-
-
-
-
-
+    inactiveSectionIds.forEach(id => {
+        document.getElementById(id).style.textDecoration = 'none';
+    });
+    hiddenSectionIds.forEach(id => {
+        document.getElementById(id).classList.add('d-none');
+    });
+    document.getElementById(activeSectionId).style.textDecoration = 'underline';
+    document.getElementById(visibleSectionId).classList.remove('d-none');
+}
 
 // CLOSE BIG POKEMON-CARD
 function quitDetailCard() {
@@ -207,27 +212,43 @@ function getSearchedPokemon() {
     searchPokemon(foundPokemonNames);
 }
 
+// GET TYPE OF POKEMONS
+async function getPokemonType(i) {
+    let type = allPokemons[i]['types'][0]['type']['name'];
+    let circle = document.getElementById(`pokescircle_${i}`);
+    let typeIcon = typeIcons[type];
+
+    if (cardIsOpen) {
+        let circle_opened = document.getElementById(`pokescircle_opened_one_${i}`);
+        circle_opened.classList.add(typeIcon.class);
+        circle_opened.src = typeIcon.src;
+    } else {
+        circle.classList.add(typeIcon.class);
+        circle.src = typeIcon.src;
+    }
+}
+
 // SEARCHBAR
 function searchPokemon() {
-
     currentPokemons = [];
     let search = document.getElementById('searchBar').value;
     let input = search.toLowerCase();
+
     for (let i = 0; i < allPokemons.length; i++) {
         if (allPokemons[i]['name'].includes(input)) {
             currentPokemons.push(allPokemons[i]);
         }
     }
+
     checkEmptySearchbar(input);
     getTypes();
 }
 
-
+// GET TYPES OF SEARCHED POKEMONS -> ARRAY CHANGED
 function getTypes() {
-    debugger; 
     for (let i = 0; i < currentPokemons.length; i++) {
         getSearchedPokemonType(i);
-        // console.log('first type',allPokemons[i]['types'][0]['type']['name']);
+        checkSecondTypeOnDetailCard(i);
     }
 }
 
@@ -235,18 +256,12 @@ function getTypes() {
 function getSearchedPokemonType(i) {
     searched = true;
     let type = currentPokemons[i]['types'][0]['type']['name'];
-
     let circle = document.getElementById(`pokescircle_${i}`);
     let typeIcon = typeIcons[type];
 
-    circle.classList.add(typeIcon.class);
+    circle.classList = [];
+    circle.classList.add('class-circle', typeIcon.class);
     circle.src = typeIcon.src;
-    console.log('check first cirlce of:', currentPokemons[i]['name']);
-    console.log('firstType:', type);
-
-    console.log('check second cirlce of:', currentPokemons[i]['name']);
-    checkSecondTypeOnDetailCard(i);
-    checkDetailColors(i);
 }
 
 // CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
@@ -256,41 +271,17 @@ function checkSecondTypeOnDetailCard(i) {
     if (type.length == 2) {
         let secType = type[1]['type']['name'];
         let typeIcon = typeIcons[secType];
-        secondType.classList.remove('d-none');
-        secondType.classList.add(typeIcon.class);
+        secondType.classList = [];
+        secondType.classList.add('class-circle', typeIcon.class);
         secondType.src = typeIcon.src;
     } else {
         secondType.classList.add('d-none');
     }
 }
 
-function checkDetailColors(i) {
-    let types = currentPokemons[i]['types'];
-    let type = currentPokemons[i]['types'][0]['type']['name'];
-
-    if (types.length == 2) {
-        let type_two = currentPokemons[i]['types'][1]['type']['name'];
-        let circle_two = document.getElementById(`pokescircle_two_${i}`);
-        let typeIcon_two = typeIcons[type_two];
-    }
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-// 
+// CHECK ARRAY LENGTH OF SEARCHED/FOUND POKEMONS
+// SET BOOLEAN
 function checkArrayLengthForSwipe() {
-    // console.log('checkArrayLengthForSwipe');
-
     if (currentPokemons.length == 1) {
         console.log(currentPokemons);
         single = true;
@@ -300,12 +291,10 @@ function checkArrayLengthForSwipe() {
     checkSingle();
 }
 
-// 
+// CHECK FOUND POKEMON IS ALONE IN ARRAY 
+// -> WHEN YES DISPLAY NONE TO ARROWS
 function checkSingle() {
-    // console.log('check single:', single);
     if (single) {
-        console.log('check single check:', single);
-
         // LEFT
         let left = document.getElementById(`left`);
         left.classList.add('d-none');
@@ -315,7 +304,7 @@ function checkSingle() {
     }
 }
 
-// 
+// CHECK IF SEARCHBAR VALUE == 0
 function checkEmptySearchbar() {
     if (currentPokemons.length === 0) {
         document.getElementById('emptyCard').classList.remove('d-none');
@@ -326,11 +315,10 @@ function checkEmptySearchbar() {
     renderPokedex();
 }
 
-// CLEAR OUT SEARCHBAR
+// CLEAR OUT SEARCHBAR -> SET LENGTH/VALUE = 0
 function clearSearchbar() {
     currentPokemons = [];
     checkEmptySearchbar();
-    // console.log(currentPokemons);
     document.getElementById('searchBar').value = '';
     document.getElementById('emptyCard').classList.add('d-none');
     let pokedex = document.getElementById('pokedex');
@@ -361,23 +349,6 @@ async function loadMorePokemons() {
     }
 }
 
-// 
-// function addBgSec(i) {
-//     let type = allPokemons[i]['types'][1]['type']['name'];
-//     let typeIcon = typeIcons[type];
-//     let secondTypeContainer = document.getElementById(`secondTypeContainer_${i}`);
-//     secondTypeContainer.classList.add(typeIcon.class);
-// }
-
-// GET TYPE OF POKEMONS
-async function getPokemonType(i) {
-    let type = allPokemons[i]['types'][0]['type']['name'];
-    let circle = document.getElementById(`pokescircle_${i}`);
-    let typeIcon = typeIcons[type];
-    circle.classList.add(typeIcon.class);
-    circle.src = typeIcon.src;
-}
-
 // LOAD PREVIOUS DATAIL_CARD
 function previousPokemon(i) {
     i--;
@@ -397,14 +368,14 @@ function checkFirst(i) {
 
 // LOAD NEXT DATAIL_CARD
 function nextPokemon(i) {
+    debugger;
+    i++;
     if (searched = true) {
-        console.log('check');
-        i++
-        console.log(currentPokemons[i]['id']);
         openDetailCard(currentPokemons[i]['id']);
+        console.log('current pokemon:', currentPokemons[i].name, i);
+        console.log('found pokemons:', currentPokemons);
         // checkMax(i);
     } else {
-        i++;
         openDetailCard(allPokemons[i]['id']);
     }
 }
@@ -421,5 +392,3 @@ function nextPokemon(i) {
 //         right.classList.remove('d-none');
 //     }
 // }
-
-
