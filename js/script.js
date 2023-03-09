@@ -2,7 +2,7 @@
 let currentPokemon;
 // ARRAYS
 let allPokemons = [];
-let currentPokemons = [];
+let renderedPokemons = [];
 // VARIABLES
 let offset = 0;
 let limit = 151;
@@ -50,7 +50,7 @@ async function loadPokemons() {
         let response = await fetch(url);
         currentPokemon = await response.json();
         allPokemons.push(currentPokemon);
-        currentPokemons.push(currentPokemon);
+        renderedPokemons.push(currentPokemon);
     }
 }
 
@@ -58,8 +58,8 @@ async function loadPokemons() {
 function renderPokedex() {
     let pokedex = document.getElementById('pokedex');
     pokedex.innerHTML = '';
-    for (let i = 0; i < currentPokemons.length; i++) {
-        pokedex.innerHTML += renderPokemons(currentPokemons, i);
+    for (let i = 0; i < renderedPokemons.length; i++) {
+        pokedex.innerHTML += renderPokemons(renderedPokemons, i);
         checkSecondType(i);
         getPokemonType(i);
     }
@@ -69,8 +69,8 @@ function renderPokedex() {
 function openDetailCard(id) {
     cardIsOpen = true;
 
-    let foundPokemon = allPokemons.find(pokemon => pokemon['id'] === id);
-    let i = allPokemons.findIndex(pokemon => pokemon['id'] === id);
+    let foundPokemon = renderedPokemons.find(pokemon => pokemon['id'] === id);
+    let i = renderedPokemons.findIndex(pokemon => pokemon['id'] === id);
     let pokemonCards = document.getElementById('renderedPokemonCard');
 
     pokemonCards.innerHTML = renderDetailCard(foundPokemon, i);
@@ -78,7 +78,7 @@ function openDetailCard(id) {
     document.getElementById('pokedex').classList.add('d-none');
 
     checkCurrentPokemon(id);
-    renderCurrentPokemon(foundPokemon, i)
+    renderCurrentPokemon(foundPokemon, i);
 }
 
 // CHECK DATA FOR CURRENT POKEMON
@@ -230,13 +230,13 @@ async function getPokemonType(i) {
 
 // SEARCHBAR
 function searchPokemon() {
-    currentPokemons = [];
+    renderedPokemons = [];
     let search = document.getElementById('searchBar').value;
     let input = search.toLowerCase();
 
     for (let i = 0; i < allPokemons.length; i++) {
         if (allPokemons[i]['name'].includes(input)) {
-            currentPokemons.push(allPokemons[i]);
+            renderedPokemons.push(allPokemons[i]);
         }
     }
 
@@ -246,7 +246,7 @@ function searchPokemon() {
 
 // GET TYPES OF SEARCHED POKEMONS -> ARRAY CHANGED
 function getTypes() {
-    for (let i = 0; i < currentPokemons.length; i++) {
+    for (let i = 0; i < renderedPokemons.length; i++) {
         getSearchedPokemonType(i);
         checkSecondTypeOnDetailCard(i);
     }
@@ -255,7 +255,7 @@ function getTypes() {
 // GET TYPE OF SEARCHED POKEMONS
 function getSearchedPokemonType(i) {
     searched = true;
-    let type = currentPokemons[i]['types'][0]['type']['name'];
+    let type = renderedPokemons[i]['types'][0]['type']['name'];
     let circle = document.getElementById(`pokescircle_${i}`);
     let typeIcon = typeIcons[type];
 
@@ -266,7 +266,7 @@ function getSearchedPokemonType(i) {
 
 // CHECK IF THERE'S A SECOND TYPE -> WHEN YES -> ADD
 function checkSecondTypeOnDetailCard(i) {
-    let type = currentPokemons[i]['types'];
+    let type = renderedPokemons[i]['types'];
     let secondType = document.getElementById(`pokescircle_two_${i}`);
     if (type.length == 2) {
         let secType = type[1]['type']['name'];
@@ -282,8 +282,8 @@ function checkSecondTypeOnDetailCard(i) {
 // CHECK ARRAY LENGTH OF SEARCHED/FOUND POKEMONS
 // SET BOOLEAN
 function checkArrayLengthForSwipe() {
-    if (currentPokemons.length == 1) {
-        console.log(currentPokemons);
+    if (renderedPokemons.length == 1) {
+        console.log(renderedPokemons);
         single = true;
     } else {
         single = false;
@@ -306,7 +306,7 @@ function checkSingle() {
 
 // CHECK IF SEARCHBAR VALUE == 0
 function checkEmptySearchbar() {
-    if (currentPokemons.length === 0) {
+    if (renderedPokemons.length === 0) {
         document.getElementById('emptyCard').classList.remove('d-none');
         searched = false;
     } else {
@@ -317,7 +317,7 @@ function checkEmptySearchbar() {
 
 // CLEAR OUT SEARCHBAR -> SET LENGTH/VALUE = 0
 function clearSearchbar() {
-    currentPokemons = [];
+    renderedPokemons = [];
     checkEmptySearchbar();
     document.getElementById('searchBar').value = '';
     document.getElementById('emptyCard').classList.add('d-none');
@@ -343,17 +343,10 @@ async function loadMorePokemons() {
         let response = await fetch(url);
         currentPokemon = await response.json();
         allPokemons.push(currentPokemon);
-        currentPokemons.push(currentPokemon);
-        pokedex.innerHTML += renderPokemons(currentPokemons, i);
+        renderedPokemons.push(currentPokemon);
+        pokedex.innerHTML += renderPokemons(renderedPokemons, i);
         await getPokemonType(i);
     }
-}
-
-// LOAD PREVIOUS DATAIL_CARD
-function previousPokemon(i) {
-    i--;
-    checkFirst(i);
-    openDetailCard(allPokemons[i]['id']);
 }
 
 // CHECK IF CARD IS FIRST OF ALL
@@ -366,45 +359,26 @@ function checkFirst(i) {
     }
 }
 
+// LOAD PREVIOUS DATAIL_CARD
+function previousPokemon(i) {
+    i--;
+    checkFirst(i);
+    openDetailCard(renderedPokemons[i]['id']);
+}
+
 // LOAD NEXT DATAIL_CARD
 function nextPokemon(i) {
-    // debugger;
-    if (searched) {
-        //  i -> allPokemons
-        console.log(i);
-        // i++;
-        // i = currentPokemons.length + 1;
-        console.log(i);
-        goTotheNextSearchedCard();
+    i++;
+    openDetailCard(renderedPokemons[i]['id']);
+    checkMax();
+}
 
-        console.log('found pokemons:', currentPokemons);
-
-        // checkMax(i);
+// CHECK IF LIMIT OF ARRAY IS REACHED
+function checkMax(i) {
+    let right = document.getElementById(`right`);
+    if (i >= renderedPokemons.length) {
+        right.classList.add('d-none');
     } else {
-        i++;
-        openDetailCard(allPokemons[i]['id']);
+        right.classList.remove('d-none');
     }
 }
-
-function goTotheNextSearchedCard() {
-    
-    console.log(currentPokemons.length)
-    // for (let e = 0; e < currentPokemons.length; e++) {
-    //     e++;
-
-    // }
-    // openDetailCard(currentPokemons[e]['id']);
-}
-
-// function checkMax(i){
-//     let right = document.getElementById(`right`);
-//     console.log(i);
-//     console.log(currentPokemons.length);
-//     if (i >= currentPokemons.length) {
-//         console.log(currentPokemons);
-//         console.log('right',right);
-//         right.classList.add('d-none');
-//     } else {
-//         right.classList.remove('d-none');
-//     }
-// }
