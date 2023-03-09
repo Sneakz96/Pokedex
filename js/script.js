@@ -368,16 +368,32 @@ function checkFirst(i) {
 
 // LOAD NEXT DATAIL_CARD
 function nextPokemon(i) {
-    debugger;
-    i++;
-    if (searched = true) {
-        openDetailCard(currentPokemons[i]['id']);
-        console.log('current pokemon:', currentPokemons[i].name, i);
+    // debugger;
+    if (searched) {
+        //  i -> allPokemons
+        console.log(i);
+        // i++;
+        // i = currentPokemons.length + 1;
+        console.log(i);
+        goTotheNextSearchedCard();
+
         console.log('found pokemons:', currentPokemons);
+
         // checkMax(i);
     } else {
+        i++;
         openDetailCard(allPokemons[i]['id']);
     }
+}
+
+function goTotheNextSearchedCard() {
+    
+    console.log(currentPokemons.length)
+    // for (let e = 0; e < currentPokemons.length; e++) {
+    //     e++;
+
+    // }
+    // openDetailCard(currentPokemons[e]['id']);
 }
 
 // function checkMax(i){

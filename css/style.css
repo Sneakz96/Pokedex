@@ -174,8 +174,9 @@ body {
 
 .small-pokemons {
     z-index: 2;
-    margin-left: 70px;
-    height: 100px;
+    margin-left: 60px;
+    height: 120px;
+    margin-top: 20px;
 }
 
 .small-pokemons:hover {
@@ -185,7 +186,6 @@ body {
 
 .pokeball-bg {
     position: absolute;
-    /* z-index: 1; */
     width: 140px;
     height: 140px;
     margin-top: 80px;
