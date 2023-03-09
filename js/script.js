@@ -158,20 +158,13 @@ function checkSecondType(i) {
     }
 }
 
-// RENDER STATS
-function changeOnStats() {
-    toggleSectionVisibility('stats');
+// CHANGE OF ACTIVE INFO
+function changeInfo(param){
+    toggleSectionVisibility(param);
 }
-
-// RENDER ATTACKS
-function changeOnAttacks() {
-    toggleSectionVisibility('attacks');
-}
-
-// RENDER ABILITIES
-function changeOnAbilities() {
-    toggleSectionVisibility('abilities');
-}
+changeInfo('stats');
+changeInfo('attacks');
+changeInfo('abilities');
 
 /**
  * sectionId OF CURRENT POKEMON 
@@ -183,7 +176,7 @@ function toggleSectionVisibility(sectionId) {
     let activeSectionId = `${sectionId}Header`;
     let inactiveSectionIds = ['statsHeader', 'attacksHeader', 'abilitiesHeader'].filter(id => id !== activeSectionId);
     let visibleSectionId = `pokemon${sectionId.charAt(0).toUpperCase()}${sectionId.slice(1)}`;
-    let hiddenSectionIds = ['stats', 'pokemonAttacks', 'pokemonAbilities'].filter(id => id !== visibleSectionId);
+    let hiddenSectionIds = ['pokemonStats', 'pokemonAttacks', 'pokemonAbilities'].filter(id => id !== visibleSectionId);
 
     inactiveSectionIds.forEach(id => {
         document.getElementById(id).style.textDecoration = 'none';

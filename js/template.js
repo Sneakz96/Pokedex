@@ -41,15 +41,15 @@ function renderDetailCard(foundPokemon, i) {
         </div>
         <div class="info-container">
             <nav class="poke-nav">
-                <a id="statsHeader" onclick="changeOnStats()">Stats</a>
-                <a id="attacksHeader" onclick="changeOnAttacks()">Attacks</a>
-                <a id="abilitiesHeader" onclick="changeOnAbilities()">Abilities</a>
+                <a id="statsHeader" onclick="changeInfo('stats')">Stats</a>
+                <a id="attacksHeader" onclick="changeInfo('attacks')">Attacks</a>
+                <a id="abilitiesHeader" onclick="changeInfo('abilities')">Abilities</a>
             </nav>
             <div id="pokemonAttacks" class="attacks d-none">
             </div>
             <div id="pokemonAbilities" class="abilities d-none">
             </div>
-            <div id="stats">
+            <div id="pokemonStats">
                 <div class="stats-class">
                     <div id="hp" class="name">${foundPokemon['stats'][0]['stat']['name']}</div>
                     <div class="progress">
