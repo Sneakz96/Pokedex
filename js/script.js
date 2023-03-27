@@ -12,6 +12,9 @@ let functionBool = true;
 let cardIsOpen = false;
 let searched = false;
 let single = false;
+// KEYBOARD
+LEFT = false;
+RIGHT = false;
 // SET TYPE_ICONS
 let typeIcons = {
     grass: { class: 'color_bg_grass', src: './img/icons/grass.svg' },
@@ -40,7 +43,9 @@ async function init() {
     loadingScreen.classList.remove('d-none');
     await loadPokemons();
     renderPokedex();
+    bindKeyPressEvents();
     loadingScreen.classList.add('d-none');
+    addScrollListener();
 }
 
 // LOAD POKEMONS FROM API
@@ -63,6 +68,7 @@ function renderPokedex() {
         checkSecondType(i);
         getPokemonType(i);
     }
+
 }
 
 // OPEN BIG POKEMON-CARD
@@ -159,7 +165,7 @@ function checkSecondType(i) {
 }
 
 // CHANGE OF ACTIVE INFO
-function changeInfo(param){
+function changeInfo(param) {
     toggleSectionVisibility(param);
 }
 changeInfo('stats');
@@ -320,14 +326,21 @@ function clearSearchbar() {
 }
 
 // ONSCROLL FUNCTION
-window.onscroll = async function scroll() {
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight && functionBool) {
-        functionBool = false;
-        limit = limit + stepsize;
-        await loadMorePokemons();
-        functionBool = true;
-    }
-};
+async function addScrollListener() {
+    const pokedex = document.getElementById('pokedex');
+    pokedex.addEventListener('scroll', async function () {
+        const scrollPos = pokedex.scrollTop + pokedex.offsetHeight;
+        const scrollMax = pokedex.scrollHeight;
+        const threshold = 50;
+        if (scrollPos >= scrollMax - threshold && functionBool) {
+            console.log('down');
+            functionBool = false;
+            limit = limit + stepsize;
+            await loadMorePokemons();
+            functionBool = true;
+        }
+    });
+}
 
 // FUNCTION AUTOMATICALLY LOAD NEXT POKEMONS
 async function loadMorePokemons() {
@@ -363,7 +376,7 @@ function previousPokemon(i) {
 function nextPokemon(i) {
     i++;
     openDetailCard(renderedPokemons[i]['id']);
-    checkMax();
+    checkMax(i);
 }
 
 // CHECK IF LIMIT OF ARRAY IS REACHED
@@ -374,4 +387,26 @@ function checkMax(i) {
     } else {
         right.classList.remove('d-none');
     }
+}
+
+// BIND KEY EVENTS LEFT + RIGHT
+function bindKeyPressEvents() {
+    document.addEventListener("keydown", (e) => {
+        if (e.keyCode == 39) {
+            RIGHT = true;
+            document.getElementById('right').click();
+        }
+        if (e.keyCode == 37) {
+            LEFT = true;
+            document.getElementById('left').click();
+        }
+    });
+    document.addEventListener("keyup", (e) => {
+        if (e.keyCode == 39) {
+            RIGHT = false;
+        }
+        if (e.keyCode == 37) {
+            LEFT = false;
+        }
+    });
 }

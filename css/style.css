@@ -114,19 +114,21 @@ body {
     bottom: 0;
     background-image: url('../img/map.jpeg');
     filter: grayscale(80%) blur(1.5px);
-    background-attachment: scroll;
+    /* background-attachment: scroll; */
 }
 
 /*MAIN*/
 /*POKEDEX*/
 .pokedex {
-    filter: unset !important;
+    /* filter: none !important; */
     position: relative;
     display: flex;
-    height: fit-content;
+    height: 100vh;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    background-color: gold;
+    overflow-y: scroll;
 }
 
 .pokemon-preview {
